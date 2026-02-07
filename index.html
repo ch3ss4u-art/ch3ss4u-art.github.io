@@ -11,6 +11,9 @@
         .analisis-card:hover { border-color: #007bff; }
         a { color: #007bff; text-decoration: none; font-weight: bold; }
         .tag { font-size: 0.8em; background: #333; padding: 3px 8px; border-radius: 4px; color: #ccc; }
+        .button-group { display: flex; gap: 10px; margin-top: 15px; }
+        .btn { display: inline-block; padding: 10px 16px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 6px; font-weight: bold; transition: background-color 0.3s; border: none; cursor: pointer; font-size: 0.95em; }
+        .btn:hover { background-color: #0056b3; }
     </style>
 </head>
 <body>
@@ -29,9 +32,12 @@
         </div>
         <div class="analisis-card">
             <span class="tag">Psicología / Freud / Lacan / Verruá / Psicoanálisis</span>
-            <h2>Análisis de [Alan.] (C. T. C.)</h2>
+            <h2>Análisis de [Alan.]</h2>
             <p>Análisis del Discurso de Alan — M. D. S. aplicado a los audios proporcionados.</p>
-            <a href="analisis-02.html">Leer análisis completo →</a>
+            <div class="button-group">
+                <a href="analisis-02.html" class="btn">C.T.C.</a>
+                <a href="analisis-03.html" class="btn">DAC</a>
+            </div>
         </div>
     </main>
 </body>

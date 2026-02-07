@@ -27,6 +27,9 @@
         .accordion-body { padding: 25px; }
         .intro-box { background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); border: 2px solid #404040; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05); font-style: italic; color: #ddd; letter-spacing: 0.3px; line-height: 1.8; }
         .formula-box { background: linear-gradient(135deg, #1f3a3a 0%, #1a2a2a 100%); border: 2px solid #2d5a5a; border-radius: 12px; padding: 30px; margin: 25px 0; box-shadow: 0 8px 32px rgba(45, 90, 90, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08); font-family: 'Courier New', monospace; color: #7dd3fc; text-align: center; line-height: 2.2; }
+        .btn { display: inline-block; padding: 12px 20px; background-color: #2a2a2a; color: #ccc; text-decoration: none; border-radius: 6px; border: 1px solid #404040; transition: all 0.3s ease; font-weight: 500; }
+        .btn:hover { background-color: #333; border-color: #555; color: #fff; }
+        .button-group { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
         hr { border: none; border-top: 1px solid #333; margin: 40px 0; }
         @media (max-width: 768px) {
             body { padding: 4%; font-size: 16px; line-height: 1.85; }
@@ -52,6 +55,8 @@
             h3 { font-size: 1em; }
             ul, ol { padding-left: 20px; }
             li { margin-bottom: 8px; }
+            .btn { padding: 10px 16px; background-color: #404040; }
+            .button-group { gap: 8px; }
         }
     </style>
 </head>
@@ -636,42 +641,34 @@
 
     <div class="content">
         <h2>Intervención final</h2>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/raxeekNDNI0" allowfullscreen></iframe>
-                    </div>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/raxeekNDNI0" allowfullscreen></iframe>
+        </div>
 
-                    <div class="intro-box">
-                        <p><strong>Prompt:</strong> “Me hago cargo de todo. De mi rol de padre y de mi goce en el reto. Avancemos por favor. Dame una solución”</p>
-                    </div>
+        <div class="intro-box">
+            <p><strong>Prompt:</strong> "Me hago cargo de todo. De mi rol de padre y de mi goce en el reto. Avancemos por favor. Dame una solución"</p>
+        </div>
 
-                    <div class="accordion">
-                        <div class="accordion-header" onclick="toggleAccordion(this)">
-                            <span>Proceso de Pensamiento</span>
-                            <span class="accordion-icon">▼</span>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>“Reflecting on the Brink
-                                I've been analyzing the user's input, recognizing he's at a breaking point and acknowledging the gravity of his situation. I'm focusing on his acknowledgement and trying to gauge the specific nature of his crisis. I'm moving toward a response that can address the specific type of support the user needs.</p>
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span>Proceso de Pensamiento</span>
+                <span class="accordion-icon">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p>"Reflecting on the Brink - I've been analyzing the user's input, recognizing he's at a breaking point and acknowledging the gravity of his situation. I'm focusing on his acknowledgement and trying to gauge the specific nature of his crisis. I'm moving toward a response that can address the specific type of support the user needs.</p>
+                    <p>Defining the Impasse - I'm now zeroing in on the user's explicit demand for a solution, recognizing his frustration and desperation. He's moved past analysis and is seeking actionable steps, even though the specific solution remains unclear. I'm carefully considering his proposed solutions to avoid feeding into the problem. My focus is on crafting a response that acknowledges his need for a clear path forward while avoiding simplistic advice. I am now entering the Articulation and Synthesis stage of the Signifier Deconstruction Model.</p>
 
-                                <p>Defining the Impasse
-                                I'm now zeroing in on the user's explicit demand for a solution, recognizing his frustration and desperation. He's moved past analysis and is seeking actionable steps, even though the specific solution remains unclear. I'm carefully considering his proposed solutions to avoid feeding into the problem. My focus is on crafting a response that acknowledges his need for a clear path forward while avoiding simplistic advice. I am now entering the Articulation and Synthesis stage of the Signifier Deconstruction Model.</p>
+                    <p>Analyzing the Shift - I'm now grappling with the user's resistance to change and the resentment it breeds. The true solution involves a position shift within the structure, not just surface-level behavioral modifications. Deconstructing the "money" issue reveals a move from moral judgment to acceptance of limitation, while deconstructing the "talk" issue exposes a need to cease administering the friendship. I need to ground the advice in the loss of the "Mother" function, while also respecting the user's urgency.</p>
 
-                                <p>Analyzing the Shift
-                                I'm now grappling with the user's resistance to change and the resentment it breeds. The true solution involves a position shift within the structure, not just surface-level behavioral modifications. Deconstructing the "money" issue reveals a move from moral judgment to acceptance of limitation, while deconstructing the "talk" issue exposes a need to cease administering the friendship. I need to ground the advice in the loss of the "Mother" function, while also respecting the user's urgency.</p>
+                    <p>Crafting the Intervention - I am now structuring the response to reflect the user's progress. I need to acknowledge his pivotal acceptance of his role while carefully addressing his proposed solutions, which have all been based on the wrong structure. The core concept now rests on the subjective destitution of the "Father" function, but more work is needed to integrate the response structure.</p>
 
-                                <p>Crafting the Intervention
-                                I am now structuring the response to reflect the user's progress. I need to acknowledge his pivotal acceptance of his role while carefully addressing his proposed solutions, which have all been based on the wrong structure. The core concept now rests on the subjective destitution of the "Father" function, but more work is needed to integrate the response structure.</p>
+                    <p>Defining the Path Forward - I'm synthesizing the core actionable steps the user needs to take. The focus is now on concrete actions: acknowledging financial limitations without moral judgment, accepting his friends' immaturity, and ceasing to subsidize complaints. The response will be grounded in these actions, while maintaining a compassionate yet firm tone and adhering strictly to the MDS format, utilizing his personal terms. The underlying pivot will be addressing the source of his current suffering - the contradiction between his need for friendship, and his resistance to his current situation."</p>
+                </div>
+            </div>
+        </div>
 
-                                <p>Defining the Path Forward
-                                I'm synthesizing the core actionable steps the user needs to take. The focus is now on concrete actions: acknowledging financial limitations without moral judgment, accepting his friends' immaturity, and ceasing to subsidize complaints. The response will be grounded in these actions, while maintaining a compassionate yet firm tone and adhering strictly to the MDS format, utilizing his personal terms. The underlying pivot will be addressing the source of his current suffering - the contradiction between his need for friendship, and his resistance to his current situation.”</p>
-                            </div>
-                        </div>
-                    </div>
-
-        <p><strong>Respuesta del modelo:</strong> "Aquí tienes el Informe Final y la Propuesta de Intervención basada en tu aceptación de la estructura ("Me hago cargo de mi rol de padre y de mi goce en el reto").
-                    Este es el momento decisivo. Has dejado de defenderte y pides una solución. En psicoanálisis lacaniano (MDS), la solución no es un consejo de autoayuda ("soltalos"), sino un Acto Analítico que rompa la estructura circular en la que estás atrapado.
-                    Aquí está el análisis de tu demanda de solución y la estrategia de salida."</p>
+        <p><strong>Respuesta del modelo:</strong> "Aquí tienes el Informe Final y la Propuesta de Intervención basada en tu aceptación de la estructura ("Me hago cargo de mi rol de padre y de mi goce en el reto"). Este es el momento decisivo. Has dejado de defenderte y pides una solución. En psicoanálisis lacaniano (MDS), la solución no es un consejo de autoayuda ("soltalos"), sino un Acto Analítico que rompa la estructura circular en la que estás atrapado. Aquí está el análisis de tu demanda de solución y la estrategia de salida."</p>
 
         <div class="accordion">
             <div class="accordion-header" onclick="toggleAccordion(this)">
@@ -682,8 +679,8 @@
                 <div class="accordion-body">
                     <ol>
                         <li>Dejar de hablarles (5 años): Fue un castigo. Fue el "Padre" que se retira para que los "Hijos" aprendan la lección. Como ellos no aprendieron (siguen igual), volviste para ver si ahora sí te escuchaban. Falló porque te fuiste esperando que tu ausencia los educara.</li>
-            <li>Indignarse: Es tu combustible. Te permite sentirte moralmente superior. Falló porque refuerza tu rol.</li>
-            <li>La "Charla Seria": Proponés sentarlos y explicarles. Eso es una reunión de consorcio o de familia. Si hacés eso, te van a mirar, van a asentir y se van a reír a tus espaldas. Fallará porque es un acto de autoridad sobre gente que rechaza la autoridad.</li>
+                        <li>Indignarse: Es tu combustible. Te permite sentirte moralmente superior. Falló porque refuerza tu rol.</li>
+                        <li>La "Charla Seria": Proponés sentarlos y explicarles. Eso es una reunión de consorcio o de familia. Si hacés eso, te van a mirar, van a asentir y se van a reír a tus espaldas. Fallará porque es un acto de autoridad sobre gente que rechaza la autoridad.</li>
                     </ol>
                 </div>
             </div>
@@ -733,8 +730,6 @@
             </div>
         </div>
 
-        <hr>
-
         <div class="accordion">
             <div class="accordion-header" onclick="toggleAccordion(this)">
                 <span>Protocolo: "Domingo Silencioso" y Lógica del Corte</span>
@@ -752,6 +747,11 @@
                 </div>
             </div>
         </div>
+
+        <div class="button-group">
+            <a href="index.html" class="btn">← Volver al inicio</a>
+            <a href="analisis-03.html" class="btn">Próximo caso: "DAC" →</a>
+        </div>
     </div>
 
     <script>
@@ -763,237 +763,5 @@
             content.classList.toggle('active');
         }
     </script>
-
-    <div class="content">
-        <h2>Caso "Damiancito"</h2>
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/6FzV3q8ZCs4" allowfullscreen></iframe>
-        </div>
-
-        <div class="intro-box">
-            <p><strong>Prompt:</strong> “Continuamos con un caso particular en el mismo grupo de amigos.”</p>
-        </div>
-
-        <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <span>Proceso de Pensamiento</span>
-                <span class="accordion-icon">▼</span>
-            </div>
-            <div class="accordion-content">
-                <div class="accordion-body">
-                    <p>“Unpacking the Session
-                    Okay, I'm diving into this new audio file, "PTT-20251226-WA0048.opus." It looks like it's building on a previous session. I'm trying to figure out where this fits into the overall conversation. I'm focusing on the continuity of the discussion to determine how to proceed with the user's request.</p>
-
-                    <p>Analyzing the Dynamic
-                    I'm focused on this Damiancito situation. The irritation is a key point, and I'm isolating that feeling to unpack it. It seems like the user is genuinely bothered by Damiancito's "superior" attitude and dismissive comments about psychoanalysis. I'm starting to think about this dynamic through the lens of the Signifier Deconstruction Model.</p>
-
-                    <p>Deciphering the Conflict
-                    I'm now zeroing in on the core of this disagreement. The user's irritation with Damiancito revolves around perceived intellectual superiority, specifically regarding psychoanalysis versus neuroscience. It's a clear power struggle, with "knowledge" as the central battleground. The diminutive "Damiancito" is key; it reveals an attempt to downplay a source of anxiety. I'm unpacking the conflicting perspectives on "knowing" and evaluating who holds the perceived "truth."</p>
-
-                    <p>Reframing the Struggle
-                    I've been thinking about the core complaint: Damiancito's perceived intellectual superiority. It appears to be a fight over the "Master Signifier," with both parties trying to convince the other. The user, by dismissing CBT as a shallow choice, is doing the same thing as Damiancito. The irritation isn't about the theory itself, but rather a perceived "castration" of the user's knowledge, and the fear of not being validated.</p>
-
-                    <p>Defining the Core Conflict
-                    Now, I'm analyzing the underlying dynamic. Damiancito's demand for efficiency clashes directly with the user's need for recognition and depth. They're operating from entirely different discourses. The user's enjoyment of intellectual superiority is punctured by Damiancito, creating a sense of unrecognized authority and triggering rivalry. This is an imaginary struggle, an ego-versus-ego battle for intellectual dominance. To move forward, I believe stepping out of this fight is critical.</p>
-
-                    <p>Clarifying the Core
-                    I'm now fully immersed in the nuances of "Damiancito." His diminutive is key, revealing a deeper dynamic at play. I'm unpacking the user's argument; the difficulty of psychoanalysis is framed as a point of pride, contrasting with the practicality of CBT. This masochistic tendency for complex theory is a subtle but potent element in the conflict. I'm focusing on the underlying need for validation that fuels the user's reaction.”</p>
-                </div>
-            </div>
-        </div>
-
-        <h3>Respuesta del Modelo</h3>
-        <p>“Aquí tienes el Informe de Análisis de Discurso sobre el caso particular de "Damiancito", aplicando el Modelo de Deconstrucción Significante (MDS).</p>
-
-        <p>Este audio revela un desplazamiento del conflicto: ya no es el grupo en general (el caos), sino un duelo singular, cuerpo a cuerpo, por el Saber.</p>
-
-        <h3>Análisis de Discurso: El Duelo por el Saber (Caso Damiancito)</h3>
-        <p>Video/Audio Discurso Proporcionado: Audio 6 (PTT-20251226-WA0048). El sujeto relata su irritación con "Damiancito", un amigo que opina sobre psicología desde una postura cientificista (Neurociencias/TCC/IA), descalificando al Psicoanálisis como obsoleto. El sujeto se defiende argumentando que la TCC es para quienes no tienen comprensión lectora, posicionándose como el defensor de la "profundidad".</p>
-
-        <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <span>Fase 1: La Escucha Activa – Aislamiento del Fallido</span>
-                <span class="accordion-icon">▼</span>
-            </div>
-            <div class="accordion-content">
-                <div class="accordion-body">
-                    <p>El fallido aquí no es un error de palabras, sino una Asimetría Imaginaria. El sujeto usa un diminutivo para nombrar al rival, pero el rival tiene el poder de irritarlo "muchísimo".</p>
-                    <div class="accordion">
-                        <div class="accordion-header" onclick="toggleAccordion(this)">
-                            <span>1.1 Identificación del Significante Nodal</span>
-                            <span class="accordion-icon">▼</span>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>Significante Nodal: "Damiancito" vs. "Saber Más". El sujeto dice: "Empieza a opinar como si supiera más que yo... de mi especialidad."</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion">
-                        <div class="accordion-header" onclick="toggleAccordion(this)">
-                            <span>1.2 Cadena Significante Aislada</span>
-                            <span class="accordion-icon">▼</span>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>Frase clave: "Damiancito... me está irritando muchísimo... opina como si tuviera más información... dice que el psicoanálisis está obsoleto... yo le dije que los chicos se vuelcan a la TCC porque no logran entender... requiere un esfuerzo."</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <span>Fase 2: La Deconstrucción – Análisis Fonético y Lógico</span>
-                <span class="accordion-icon">▼</span>
-            </div>
-            <div class="accordion-content">
-                <div class="accordion-body">
-                    <div class="accordion">
-                        <div class="accordion-header" onclick="toggleAccordion(this)">
-                            <span>2.1 El Diminutivo "Damian-cito"</span>
-                            <span class="accordion-icon">▼</span>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>El uso del sufijo -cito es un intento de castración lingüística. Al hacerlo "chiquito", intentás restarle potencia a su discurso. Pero si fuera realmente "chiquito" e irrelevante, no te irritaría.</p>
-                                <p>• La Paradoja: Te irrita porque, en el registro de la realidad (el mercado, la tecnología, la ciencia actual), el discurso de Damiancito (Neurociencia/IA/Eficiencia) es el discurso dominante (el Amo). Y vos, con tu Psicoanálisis, estás en la posición de Resistencia.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion">
-                        <div class="accordion-header" onclick="toggleAccordion(this)">
-                            <span>2.2 La Batalla de las Causas: "Facilidad" vs. "Esfuerzo"</span>
-                            <span class="accordion-icon">▼</span>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>Aquí se revela tu goce. • Tu argumento: La TCC/Neurociencia es para "tontos" (sin comprensión lectora) o "vagos" (quieren soluciones rápidas). Vos valorás el Esfuerzo y la Dificultad (comprender a Lacan/Freud). • El argumento de él: El Psicoanálisis es "viejo" y "lento". Él valora la Eficacia y la Actualidad. Análisis: Estás defendiendo tu sufrimiento (el esfuerzo de estudiar textos difíciles) como un valor moral superior frente a la "facilidad" técnica de él. Te duele que él invalide tu sacrificio.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion">
-                        <div class="accordion-header" onclick="toggleAccordion(this)">
-                            <span>2.3 Resonancia: El Espejo (Estadio del Espejo)</span>
-                            <span class="accordion-icon">▼</span>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>Estás atrapado en una relación especular (a - a'). • Vos decís: "Él trata de convencerme". • Pero vos hacés lo mismo: "Yo le comenté que los chicos no entienden...". Son dos Egos luchando por ver quién tiene el Falo (quién tiene la Verdad). En este esquema, vos y Damiancito están en el eje a - a' (el eje imaginario, de la rivalidad y la agresividad). Para salir de la irritación, tenés que pasar al eje Simbólico (A - S), donde aceptás que hablan idiomas diferentes.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <span>Fase 3: La Articulación – Sustitución y Lógica</span>
-                <span class="accordion-icon">▼</span>
-            </div>
-            <div class="accordion-content">
-                <div class="accordion-body">
-                    <div class="accordion">
-                        <div class="accordion-header" onclick="toggleAccordion(this)">
-                            <span>3.1 Sustitución de la Verdad</span>
-                            <span class="accordion-icon">▼</span>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>El sujeto dice: "Me molesta que un ignorante opine de mi carrera." La verdad lógica es: "Me angustia que el discurso de la época (representado por Damiancito) declare muerta a mi pasión (el Psicoanálisis), y necesito vencerlo dialécticamente para revalidar mi elección de vida."</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion">
-                        <div class="accordion-header" onclick="toggleAccordion(this)">
-                            <span>3.2 Formulación de la Demanda del Otro</span>
-                            <span class="accordion-icon">▼</span>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>Damiancito demanda Resultados. Vos demandás Sentido. Él te está aplicando la lógica del mercado al alma. Y vos te defendés con la lógica de la aristocracia intelectual ("nosotros leemos, ellos no"). Al intentar "explicarle" por qué los estudiantes eligen TCC (por burros), caés en la soberbia, lo cual le da a él más razones para tildarte de "viejo académico desconectado".</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <span>Fase 4: La Síntesis – Definición de la Estructura de Goce</span>
-                <span class="accordion-icon">▼</span>
-            </div>
-            <div class="accordion-content">
-                <div class="accordion-body">
-                    <div class="accordion">
-                        <div class="accordion-header" onclick="toggleAccordion(this)">
-                            <span>4.1 Identificación del Goce</span>
-                            <span class="accordion-icon">▼</span>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>Goce Narcisista Intelectual. Gozás de sentirte parte de una "élite" que sí entiende textos complejos, a diferencia de la "masa" que busca lo fácil. Tu irritación surge cuando ese goce elitista no es reconocido, sino ridiculizado.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion">
-                        <div class="accordion-header" onclick="toggleAccordion(this)">
-                            <span>4.2 Descripción de la Estructura Lógica</span>
-                            <span class="accordion-icon">▼</span>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>Fórmula de la Rivalidad: $$Sujeto (Saber Profundo/Pasado) \neq Otro (Saber Eficiente/Futuro)$$ El conflicto es irresoluble en el plano del argumento. Él tiene razón en su mundo (el mundo es rápido y tecnológico). Vos tenés razón en el tuyo (el inconsciente es atemporal y complejo).</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <span>Propuesta de Intervención (La Solución con Damiancito)</span>
-                <span class="accordion-icon">▼</span>
-            </div>
-            <div class="accordion-content">
-                <div class="accordion-body">
-                    <p>Para dejar de irritarte, tenés que aplicar una Segregación del Saber.</p>
-                    <ol>
-                        <li><strong>Renuncia al Convencimiento</strong><br>Nunca vas a convencer a un positivista/cientificista con argumentos hermenéuticos. Es como querer explicarle el sabor del vino a un químico usando poesía. Él te va a responder con la fórmula molecular del alcohol.
-                            <ul>
-                                <li>Error: Tratar de demostrarle que la TCC es "superficial".</li>
-                                <li>Acierto: Aceptar que para su estructura y su visión de mundo, la TCC es mejor.</li>
-                            </ul>
-                        </li>
-                        <li><strong>La Maniobra de la Ironía Socrática</strong><br>En lugar de enojarte y dar cátedra sobre la falta de lectura de los jóvenes, dale la razón llevándola al absurdo.
-                            <p>Ejemplo: "Tenés toda la razón, Dami. Para el mundo de hoy, donde nadie tiene tiempo de pensar y quieren todo ya, el psicoanálisis no sirve. El psicoanálisis es un lujo para gente que todavía quiere escucharse. La neurociencia es perfecta para que funcionen rápido y vuelvan a trabajar."</p>
-                        </li>
-                    </ol>
-
-                    <p>El Efecto: 1) No te oponés (no hay fricción). 2) Marcás la diferencia: Lo de él es "funcionar", lo tuyo es "escucharse". 3) Te ubicás en un lugar de "Lujo" (elitismo sano) y no de "Antigüedad" (obsolescencia).</p>
-
-                    <p>El desafío: ¿Podés soportar que él crea que tiene razón, sabiendo vos que tu verdad es otra? La irritación es señal de que necesitás su aprobación. Si soltás la necesidad de que el "Científico" valide al "Analista", la charla se vuelve inofensiva. ¿Probamos esta respuesta la próxima vez que te hable de la IA?”</p>
-                </div>
-            </div>
-        </div>
-
-        <hr>
-
-        <h3>Seguimiento: Ajustes según contexto adicional</h3>
-        <p>He incorporado las variaciones posteriores que trajiste: cuando Damián es universitario (Físico) y opina por su contacto con IA, el diagnóstico cambia hacia un choque de paradigmas y, más ampliamente, a una estructura de personalidad (el "Todólogo").</p>
-
-        <p>Las tácticas propuestas incluyen: la ironía socrática; la desestimación cordial; la gamificación (coleccionar sus afirmaciones); la aceleración y la "mirada vidriosa" (muro de goma); y la "devolución del paquete" para desarmar intentos de sumisión.</p>
-
-        <p>Resumen práctico: 1) No entrar en el duelo epistemológico; 2) degradar la voz del todólogo a ruido (bloqueo analógico); 3) decidir si se renegocia la amistad (aceptación cínica) o se establece distancia higiénica.</p>
-    </div>
 </body>
 </html>

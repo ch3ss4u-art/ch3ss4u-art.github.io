@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis - MDS</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #111; color: #eee; line-height: 1.8; padding: 5%; max-width: 800px; margin: auto; text-align: justify; }
+        h1 { font-size: 1.8em; margin: 20px 0; }
+        h2 { font-size: 1.5em; margin: 25px 0 15px 0; }
+        h3 { font-size: 1.2em; margin: 15px 0 10px 0; }
+        p { margin-bottom: 15px; word-spacing: 0.1em; }
+        ul, ol { margin: 15px 0; padding-left: 25px; }
+        li { margin-bottom: 10px; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 30px 0; border-radius: 8px; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .content { background: #1a1a1a; padding: 30px; border-radius: 8px; margin-bottom: 30px; }
+        a { color: #ccc; text-decoration: underline; }
+        .accordion { background: #1a1a1a; border-radius: 8px; overflow: hidden; margin-bottom: 20px; }
+        .accordion-header { background: #2a2a2a; padding: 18px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; border: 1px solid #333; transition: background 0.3s ease; font-size: 1em; }
+        .accordion-header:hover { background: #333; }
+        .accordion-header.active { background: #404040; }
+        .accordion-icon { transition: transform 0.3s ease; font-size: 1.2em; flex-shrink: 0; margin-left: 15px; }
+        .accordion-icon.active { transform: rotate(180deg); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .accordion-content.active { max-height: 10000px; }
+        .accordion-body { padding: 25px; }
+        .intro-box { background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); border: 2px solid #404040; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05); font-style: italic; color: #ddd; letter-spacing: 0.3px; line-height: 1.8; }
+        .formula-box { background: linear-gradient(135deg, #1f3a3a 0%, #1a2a2a 100%); border: 2px solid #2d5a5a; border-radius: 12px; padding: 30px; margin: 25px 0; box-shadow: 0 8px 32px rgba(45, 90, 90, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08); font-family: 'Courier New', monospace; color: #7dd3fc; text-align: center; line-height: 2.2; }
+        hr { border: none; border-top: 1px solid #333; margin: 40px 0; }
+        .btn { display: inline-block; padding: 12px 20px; background-color: #2a2a2a; color: #ccc; text-decoration: none; border-radius: 6px; border: 1px solid #404040; transition: all 0.3s ease; font-weight: 500; }
+        .btn:hover { background-color: #333; border-color: #555; color: #fff; }
+        .button-group { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+        
+        @media (max-width: 768px) {
+            body { padding: 4%; font-size: 16px; line-height: 1.85; }
+            .content { padding: 20px; }
+            .accordion-body { padding: 18px; }
+            .accordion-header { padding: 15px; font-size: 0.95em; }
+            .intro-box { padding: 20px; }
+            .formula-box { padding: 20px; font-size: 0.9em; }
+            h1 { font-size: 1.6em; margin: 15px 0; }
+            h2 { font-size: 1.3em; }
+            h3 { font-size: 1.1em; }
+            p { margin-bottom: 12px; }
+            .btn { padding: 10px 16px; background-color: #404040; }
+            .button-group { gap: 8px; }
+        }
+        
+        @media (max-width: 480px) {
+            body { padding: 3%; font-size: 15px; line-height: 1.9; }
+            .content { padding: 15px; }
+            .accordion-body { padding: 15px; }
+            .accordion-header { padding: 12px; font-size: 0.9em; }
+            .intro-box { padding: 15px; }
+            .formula-box { padding: 15px; font-size: 0.85em; line-height: 2; }
+            h1 { font-size: 1.4em; margin: 12px 0; }
+            h2 { font-size: 1.15em; }
+            h3 { font-size: 1em; }
+            ul, ol { padding-left: 20px; }
+            li { margin-bottom: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html">← Volver al inicio</a>
+    
+    <h1>Análisis [NOMBRE]. (MDS[###])</h1>
+
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/[VIDEO_ID]" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        function toggleAccordion(header) {
+            header.classList.toggle('active');
+            const icon = header.querySelector('.accordion-icon');
+            icon.classList.toggle('active');
+            const content = header.nextElementSibling;
+            content.classList.toggle('active');
+        }
+    </script>
+
+    <div class="content">
+        <div class="intro-box">
+            <p><strong>[TÍTULO DEL PROMPT]:</strong> "[TEXTO DEL PROMPT]"</p>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span>Proceso de Pensamiento</span>
+                <span class="accordion-icon">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p>[ANÁLISIS DEL PROCESO DE PENSAMIENTO]</p>
+                </div>
+            </div>
+        </div>
+
+        <h3>Respuesta del Modelo</h3>
+        <p>[INTRODUCCIÓN A LA RESPUESTA]</p>
+    </div>
+
+    <hr>
+
+    <!-- SECCIONES DE ANÁLISIS: DUPLICAR SEGÚN SEA NECESARIO -->
+    <div class="content">
+        <div class="intro-box">
+            <p><strong>[CONTEXTO O NUEVO PROMPT]:</strong> "[TEXTO]"</p>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span>Proceso de Pensamiento</span>
+                <span class="accordion-icon">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p>[ANÁLISIS DEL PROCESO DE PENSAMIENTO]</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span>Análisis: [TÍTULO DEL ANÁLISIS]</span>
+                <span class="accordion-icon">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p>[INTRODUCCIÓN DEL ANÁLISIS]</p>
+
+                    <!-- FASES ANIDADAS: DUPLICAR SEGÚN SEA NECESARIO -->
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Fase 1: [TÍTULO DE FASE]</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>[CONTENIDO DE FASE 1]</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Fase 2: [TÍTULO DE FASE]</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>[CONTENIDO DE FASE 2]</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Fase 3: [TÍTULO DE FASE]</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>[CONTENIDO DE FASE 3]</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Fase 4: [TÍTULO DE FASE]</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>[CONTENIDO DE FASE 4]</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- SECCIÓN DE CIERRE -->
+    <div class="content" style="background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%); border: 2px solid #404040; margin: 40px 0;">
+        <h1 style="text-align: center; color: #ddd; font-size: 1.8em; margin: 30px 0;">FIN DEL ANÁLISIS</h1>
+        <hr>
+        <p style="text-align: center; font-style: italic; color: #aaa; font-size: 1.1em;">[SUBTÍTULO O REFLEXIÓN FINAL]</p>
+
+        <div class="button-group">
+            <a href="index.html" class="btn">← Volver al inicio</a>
+            <a href="analisis-[##].html" class="btn">Próximo caso: "[NOMBRE]" →</a>
+        </div>
+    </div>
+
+</body>
+</html>
