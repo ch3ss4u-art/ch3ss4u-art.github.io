@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis Mariana - Marianerror404 (MDS002)</title>
+    <style>
+        :root {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --border-color: #404040;
+            --accent-blue: #3498db;
+            --accent-red: #e74c3c;
+            --accent-purple: #8e44ad;
+            --accent-yellow: #ffc107;
+            --accent-green: #28a745;
+            --warning-bg: #442c2e;
+            --success-bg: #2c442e;
+            --info-bg: #2c3e44;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        h1 {
+            border-bottom: 3px solid var(--accent-blue);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            border-left: 5px solid var(--accent-red);
+            padding-left: 15px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            color: var(--accent-purple);
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+        
+        h4 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        
+        strong {
+            color: var(--text-primary);
+        }
+        
+        a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .analysis-section {
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 177.78%; /* 9:16 aspect ratio for Shorts */
+            margin-bottom: 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #000;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        .quote {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid var(--accent-blue);
+            padding: 15px;
+            margin: 15px 0;
+            font-style: italic;
+            color: var(--text-primary);
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .formula {
+            background-color: rgba(142, 68, 173, 0.2);
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            border: 1px solid var(--accent-purple);
+            color: var(--text-primary);
+        }
+        
+        .intervention {
+            background-color: rgba(255, 193, 7, 0.15);
+            border-left: 4px solid var(--accent-yellow);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .key-point {
+            background-color: rgba(40, 167, 69, 0.15);
+            border-left: 4px solid var(--accent-green);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .warning {
+            background-color: rgba(220, 53, 69, 0.15);
+            border-left: 4px solid var(--accent-red);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .star-rating {
+            color: var(--accent-yellow);
+            font-size: 24px;
+        }
+        
+        details {
+            margin: 15px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: rgba(60, 60, 60, 0.5);
+        }
+        
+        summary {
+            padding: 12px 15px;
+            cursor: pointer;
+            font-weight: bold;
+            background-color: rgba(70, 70, 70, 0.7);
+            color: var(--text-primary);
+            user-select: none;
+            outline: none;
+        }
+        
+        summary:hover {
+            background-color: rgba(80, 80, 80, 0.8);
+        }
+        
+        details[open] summary {
+            background-color: var(--accent-blue);
+            color: white;
+        }
+        
+        details > p, details > ul, details > div {
+            padding: 10px 15px;
+        }
+        
+        code {
+            background-color: rgba(100, 100, 100, 0.3);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: var(--accent-yellow);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-link">← Volver al inicio</a>
+    
+    <h1>Análisis Mariana - Marianerror404 (MDS002)</h1>
+    
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/shorts/O3DhTQiiPm4" allowfullscreen></iframe>
+    </div>
+    
+    <div class="analysis-section">
+        <h2>Detalle del Análisis</h2>
+        <p><strong>Instrucción:</strong> Analizamos este testimonio con el método M.D.S. En principio, revisemos el discurso de ella, pero teniendo en cuenta que lo importante es la conducta de él.</p>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ANÁLISIS DE ELLA -->
+    <!-- ============================================ -->
+    
+    <div class="analysis-section">
+        <h2>Análisis de Discurso: Aplicación del Modelo de Deconstrucción Significante (MDS)</h2>
+        <p><strong>Video/Discurso Proporcionado:</strong> "CITA CON: Quiero una Chocolatada (42 años) - Marianerror404"</p>
+        
+        <h3>Fase 1: La Escucha Activa - Aislamiento del Fallido</h3>
+        
+        <details>
+            <summary>1.1 Identificación del Significante Nodal: El Lapsus</summary>
+            <p>El significante que interrumpe la narrativa de "éxito" y "madurez" de la cita es:</p>
+            <p><strong>"CHOCOLATADA"</strong>. Aunque no es un error gramatical, funciona como un <em>sinthome</em> que condensa la incomodidad del encuentro. El segundo punto de quiebre (lapsus de acción/discurso) es la mención repetida de <strong>"CAGAR"</strong> (hacer lo segundo) como el eje que detona la separación.</p>
+        </details>
+        
+        <details>
+            <summary>1.2 Cadena Significante Aislada</summary>
+            <p>"...me pidió por favor que me vaya porque se estaba haciendo lo segundo... me dice por favor espera porque exploté... me dice 'quiero una chocolatada' (42 años)... le hice la chocolatada, le fui a comprar la leche".</p>
+        </details>
+        
+        <h3>Fase 2: La Deconstrucción - Análisis Fonético y Homofónico</h3>
+        
+        <details>
+            <summary>2.1 Descomposición Fonética</summary>
+            <ul>
+                <li><strong>CHO-CO-LA-TA-DA</strong></li>
+                <li><strong>EX-PLO-TÉ</strong></li>
+                <li><strong>LE-CHE</strong></li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>2.2 Búsqueda de Homófonos y Polisemia</summary>
+            <ul>
+                <li><strong>CHOCO-LA-TA-DA:</strong>
+                    <ul>
+                        <li><em>Choco:</em> Del verbo chocar. Un encuentro que colisiona.</li>
+                        <li><em>La-tada:</em> "La taba" (suerte/azar) o "La data" (la información que falta).</li>
+                        <li><em>Choc-o-la-tada:</em> "Chocó la taba". La suerte de la cita se dio vuelta.</li>
+                    </ul>
+                </li>
+                <li><strong>EX-PLO-TÉ:</strong>
+                    <ul>
+                        <li><em>Ex:</em> Lo que queda fuera, lo anterior.</li>
+                        <li><em>Plote:</em> Del inglés <em>plot</em> (trama). La trama del "Ex".</li>
+                    </ul>
+                </li>
+                <li><strong>LECHE:</strong> En el argot rioplatense, "leche" remite tanto al fluido nutritivo materno como al fluido sexual (orgasmo) y a la "mala suerte" (mala leche).</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>2.3 Identificación de Resonancias (La Red)</summary>
+            <p>La insistencia en la leche y la chocolatada (regresión infantil) resuena con el acto de "cagar" (etapa anal). El sujeto describe una escena de extrema intimidad escatológica ("exploté") seguida inmediatamente por un pedido de nutrición infantil.</p>
+            <p>La red vincula: <strong>Cuerpo Desechante (Explotar) + Cuerpo Necesitado (Leche/Chocolatada)</strong>.</p>
+        </details>
+        
+        <h3>Fase 3: La Articulación - Sustitución y Lógica</h3>
+        
+        <details>
+            <summary>3.1 Sustitución de la Verdad</summary>
+            <p>La frase original: "Me pidió una chocolatada y se sintió incómodo" se reinterpreta bajo el MDS como:</p>
+            <div class="quote">
+                "Lo que 'chocó' (Choco) fue la demanda de ser nutrido (Leche) después de haberse mostrado como desecho (Exploté/Cagar)."
+            </div>
+            <p>La "chocolatada" no es una bebida; es el <strong>significante de la Regresión al Objeto Pequeño a</strong>. El hombre de 42 años no huye por la diarrea, sino por haber quedado posicionado como un niño frente a una madre que "le compra la leche" y "le hace las tostadas" después de que él ensuciara su baño.</p>
+        </details>
+        
+        <details>
+            <summary>3.2 Formulación de la Demanda del Otro</summary>
+            <p>El sujeto (la mujer) ofrece una <strong>Maternidad Totalizadora</strong>. Ella limpia, compra, nutre y "no le importa" el olor. El Otro (el hombre) demanda, a través del síntoma gástrico, un límite.</p>
+            <p>Al no encontrar el límite en ella (que acepta todo con una sonrisa), el Otro huye porque la demanda de ella ("yo hice todo bien") se vuelve <strong>asfixiante</strong>. El "ser amigos" es la distancia necesaria para no ser "el hijo" de una madre que sabe demasiado sobre sus intestinos.</p>
+        </details>
+        
+        <h3>Fase 4: La Síntesis - Definición de la Estructura de Goce</h3>
+        
+        <details>
+            <summary>4.1 Identificación del Goce (Placer-Sufrimiento)</summary>
+            <p>Se identifica un <strong>Goce Histérico-Materno</strong>. La usuaria goza en la posición de "la que todo lo puede/la que no se asquea". Ella encuentra placer en la omnipotencia de cuidar al otro en su estado más abyecto (la "explosión" en el baño).</p>
+            <p>Su sufrimiento ("¿por qué se fue?") es el precio de su goce: al borrar el misterio del cuerpo y la vergüenza, borra el deseo sexual, transformando la alcoba en una <strong>nursery</strong>.</p>
+        </details>
+        
+        <details>
+            <summary>4.2 Descripción de la Estructura Lógica</summary>
+            <p>La lógica del sujeto se resume en:</p>
+            <div class="quote">
+                "Para que el Otro me ame, debo anular su vergüenza convirtiéndome en su madre; pero al anular su vergüenza, anulo su deseo".
+            </div>
+            <p>El lapsus de la "Chocolatada" es la marca de la infantilización definitiva que clausura la posibilidad del encuentro erótico. Ella "hizo todo bien" para una madre, pero "todo mal" para una amante.</p>
+        </details>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ANÁLISIS DE ÉL -->
+    <!-- ============================================ -->
+    
+    <div class="analysis-section">
+        <h2>Análisis de Discurso: La Posición del Otro (Él)</h2>
+        <p>Para analizar la posición de él, debemos aplicar el modelo sobre los fragmentos de discurso que ella le atribuye (la palabra del Otro en el discurso del sujeto). Él es quien introduce los significantes de ruptura: "Lo segundo", "Exploté" e "Incomodidad".</p>
+        
+        <h3>Fase 1: La Escucha Activa - Aislamiento del Fallido</h3>
+        
+        <details>
+            <summary>1.1 Identificación del Significante Nodal</summary>
+            <p>El significante es <strong>"EXPLOTÉ"</strong>. No dice "me siento mal" o "estoy enfermo". Usa un término de fragmentación, de ruptura de la integridad del cuerpo.</p>
+        </details>
+        
+        <details>
+            <summary>1.2 Cadena Significante Aislada</summary>
+            <p>"...se estaba haciendo lo segundo... esperá porque exploté... me levanté incómodo... prefiero que seamos amigos".</p>
+        </details>
+        
+        <h3>Fase 2: La Deconstrucción - Análisis Fonético y Homofónico</h3>
+        
+        <details>
+            <summary>2.1 Descomposición Fonética de la "Incomodidad"</summary>
+            <ul>
+                <li><strong>IN-CO-MO-DO</strong></li>
+                <li><strong>IN</strong> (Prefijo de negación/Interior)</li>
+                <li><strong>COMO</strong> (Del verbo comer/Acción de nutrirse)</li>
+                <li><strong>DO</strong> (Dono/Dar)</li>
+            </ul>
+            <p><strong>IN-COMODO:</strong> "No puedo comer lo que me das" o "Lo que comí me dejó fuera de lugar".</p>
+        </details>
+        
+        <details>
+            <summary>2.2 Búsqueda de Homófonos y Polisemia</summary>
+            <ul>
+                <li><strong>LO SEGUNDO:</strong> En la lógica del desarrollo psicosexual, lo "segundo" es la fase anal. Pero también remite a ocupar el segundo lugar. Al "explotar" y pedir una "chocolatada", él deja de ser el "primero" (el hombre/amante) para ser el "segundo" (el niño cuidado).</li>
+                <li><strong>EXPLOTÉ:</strong> Suena a "Ex-Plote" (fuera de la trama). Él rompe la escena de seducción con la realidad más cruda del cuerpo.</li>
+            </ul>
+        </details>
+        
+        <h3>Fase 3: La Articulación - Sustitución y Lógica</h3>
+        
+        <details>
+            <summary>3.1 Sustitución de la Verdad</summary>
+            <p>La demanda de él se traduce como:</p>
+            <div class="quote">
+                "Al mostrarte mi mierda (exploté) y pedirte mi leche (chocolatada), te convertí en mi madre. Ahora no puedo cogerte porque no se coge con la madre (incómodo/incesto)."
+            </div>
+        </details>
+        
+        <details>
+            <summary>3.2 Formulación de la Demanda del Otro</summary>
+            <p>Él no pide sexo, pide regresión. Al pedir la chocolatada a los 42 años tras el episodio del baño, está testeando si ella pondrá un límite (ley) o si entrará en su juego infantil.</p>
+            <p>Como ella acepta y "le va a comprar la leche", ella confirma el lugar materno. La "incomodidad" posterior es el síntoma de haber cruzado una barrera simbólica: la del <strong>incesto simbólico</strong>.</p>
+        </details>
+        
+        <h3>Fase 4: La Síntesis - Definición de la Estructura de Goce</h3>
+        
+        <details>
+            <summary>4.1 Identificación del Goce</summary>
+            <p>Es un <strong>Goce de Desecho (Anal)</strong>. Él se posiciona como el objeto que "explota" y ensucia, buscando un Otro que lo limpie y lo nutra. Es el placer de la pasividad absoluta.</p>
+            <p>Sin embargo, este goce es incompatible con el deseo erótico, que requiere una distancia y un velo (que aquí se perdió en el baño).</p>
+        </details>
+        
+        <details>
+            <summary>4.2 Descripción de la Estructura Lógica</summary>
+            <p>La lógica de él es:</p>
+            <div class="quote">
+                "Si te muestro mi parte más abyecta y tú la aceptas sin horror, me salvas como niño pero me matas como hombre".
+            </div>
+            <p>Su huida hacia la "amistad" es el intento de restaurar el velo que él mismo rompió.</p>
+            <p><strong>"Seamos amigos"</strong> significa: "Volvamos a tener ropa puesta y a no saber qué pasó en ese baño".</p>
+        </details>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- EL CIRCUITO DE MANCHAS -->
+    <!-- ============================================ -->
+    
+    <div class="analysis-section">
+        <h2>Análisis de Discurso: El Circuito del Goce "Manchado"</h2>
+        <p>Como bien señaló el usuario: hay una relación muy clara entre la chocolatada y el detonado. La chocolatada marrón, el detonado marrón, el baño detonado explotado es una diarrea importante que salpica y mancha, y luego la leche salpica y mancha. Ellos lo pasaron muy bien según ella, la noche tuvieron muchos mimitos y ella dijo "Es raro que yo haga mimitos", todo muy cariñoso. Ahí es donde aparece la madre por primera vez, y después ella le saca la leche de nuevo porque ella llega, le prepara la chocolatada y cogen de nuevo.</p>
+        
+        <h3>Fase 1: La Escucha Activa - El Refuerzo del Fallido</h3>
+        
+        <details>
+            <summary>1.1 El Significante Nodal: LA MANCHA / EL DETONADO</summary>
+            <p>El "Detonado" (la explosión en el baño) y la "Chocolatada" comparten la misma consistencia simbólica: algo fluido, marrón, que mancha y que desborda el límite del cuerpo.</p>
+        </details>
+        
+        <h3>Fase 2: La Deconstrucción - Fonética y Resonancias</h3>
+        
+        <details>
+            <summary>2.1 Descomposición: CHOCO-LA-TADA / LA-LECHE</summary>
+            <ul>
+                <li><strong>CHOCO:</strong> Ya no es solo "chocar", es el "Choc" (el impacto visual del baño detonado).</li>
+                <li><strong>LA LECHE:</strong> Es el significante del "mimo" que se vuelve "mancha". Ella dice: "le fui a comprar la leche". Ella provee el líquido que luego se mezclará para ser "marrón".</li>
+                <li><strong>DETONADO:</strong> De-tonado. Fuera de tono. El cuerpo perdió el "tono" (la tensión erótica) para volverse puro derrame.</li>
+            </ul>
+        </details>
+        
+        <h3>Fase 3: La Articulación - La Madre y el Re-Coito</h3>
+        
+        <details>
+            <summary>3.1 Sustitución de la Verdad (El Coito Reparador)</summary>
+            <p>La observación sobre que "cogen de nuevo" después de la chocolatada es la clave del horror de él.</p>
+            <p>La verdad sustituida:</p>
+            <div class="quote">
+                "Ella no solo vio mi mierda (el detonado), sino que me alimentó (la leche) y luego me usó sexualmente en el mismo estado de abyección."
+            </div>
+        </details>
+        
+        <details>
+            <summary>3.2 La Demanda del Otro: La "Madre Devoradora"</summary>
+            <p>Ella aparece como la madre que no se asquea ante la caca del hijo, lo limpia dándole la leche (chocolatada) y luego —aquí está el punto de quiebre— lo desea sexualmente mientras él todavía está "sucio".</p>
+            <p>Para él, ella se transforma en la <strong>Madre Primitiva/Devoradora</strong>: la que no tiene Ley, la que no tiene asco, la que puede gozar de los desechos.</p>
+        </details>
+        
+        <h3>Fase 4: La Síntesis - Estructura de Goce</h3>
+        
+        <details>
+            <summary>4.1 Identificación del Goce: Goce de la Indiferenciación</summary>
+            <p>El goce aquí es la anulación de la distancia.</p>
+            <ul>
+                <li>Normalmente, el sexo requiere que el baño esté cerrado y el deseo sea "limpio".</li>
+                <li>Aquí, el circuito es: <strong>Coger → Cagar → Chocolatada → Coger</strong>. Lo marrón (la mierda) y lo blanco (la leche/semen) se mezclan en la "Chocolatada" de la mañana.</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>4.2 Descripción de la Estructura Lógica</summary>
+            <p>La lógica de la "incomodidad" de él a los tres días es el retorno de la represión. Él se da cuenta de que ella lo vio "detonado" y, en lugar de poner una distancia (la Ley del asco), ella lo "re-absorbió" nutritiva y sexualmente.</p>
+            <p>Él huye de la <strong>Mujer-Cloaca/Madre-Total</strong> que no pone límites entre el ano y la boca. Ella dice "yo hice todo bien" porque en su lógica de Maternidad Omnipotente, el asco no existe. Pero para él, el asco era lo único que podía salvarlo de ser un puro objeto de desecho en manos de ella.</p>
+        </details>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- EL ERROR 404 -->
+    <!-- ============================================ -->
+    
+    <div class="analysis-section">
+        <h2>Análisis del "Error 404" de Mariana</h2>
+        <p>Cuando ella dice "Yo no suelo ser muy mimosa", pero con él sí lo fue, está describiendo su propia "regresión". Ella también se "detonó" afectivamente y ahora no entiende por qué el desborde de fluidos (mimos, mierda, leche, sexo) terminó en la frialdad de "seamos amigos".</p>
+        
+        <h3>1. El "Error 404": El Colapso del Sistema</h3>
+        <details>
+            <summary>Explicación</summary>
+            <p>Ella se llama a sí misma "Marianerror404". El código 404 significa: <strong>Página no encontrada</strong>. Ella se posiciona como alguien que, cuando aparece el deseo o el conflicto, "desaparece" o se desconecta.</p>
+            <p>Pero con este tipo pasó algo distinto: ella no se desconectó, ella se <strong>desbordó</strong>.</p>
+        </details>
+        
+        <h3>2. La Transformación: De "Fría" a "Madre-Océano"</h3>
+        <details>
+            <summary>Explicación</summary>
+            <p>Ella dice: "Yo no suelo ser muy mimosa". El "mimo" es un fluido afectivo, es blando, es pegajoso. Al aceptar los mimos, ella rompe su propia coraza de "Error 404" y entra en una regresión simbiótica con él.</p>
+            <ul>
+                <li><strong>La noche:</strong> Son mimos (leche afectiva).</li>
+                <li><strong>La mañana:</strong> Es el detonado (mierda).</li>
+                <li><strong>El desayuno:</strong> Es la chocolatada (la mezcla de ambos).</li>
+            </ul>
+        </details>
+        
+        <h3>3. El Re-Coito: La Mancha Definitiva</h3>
+        <details>
+            <summary>Explicación</summary>
+            <p>Lo que el usuario señaló es la clave técnica: <strong>Cogen después de la chocolatada</strong>. Para la lógica analítica, eso es un "Coito en la Inmundicia".</p>
+            <ul>
+                <li>Ya no hay velos.</li>
+                <li>Ella ya sabe cómo huele él cuando "explota".</li>
+                <li>Él ya sabe que ella lo sabe y que, encima, le compra la leche.</li>
+            </ul>
+            <p>Cuando vuelven a coger, ella está gozando de su propia capacidad de "absorberlo todo". Ella es la gran esponja que absorbe el detonado de él y lo transforma en "amor".</p>
+            <p>Eso es una fantasía de omnipotencia materna. Ella piensa: "Soy tan genial que hasta su mierda me parece mímica y deseable".</p>
+        </details>
+        
+        <h3>4. ¿Por qué él huye a los tres días?</h3>
+        <details>
+            <summary>Explicación</summary>
+            <p>Él huye por el <strong>Efecto Post-Chocolatada</strong>. A los tres días, la "intoxicación" de la intimidad total decanta. Él se mira al espejo y ya no se ve como un hombre deseante, se ve como un "bebé detonado".</p>
+            <ul>
+                <li>Si se queda con ella, se queda atrapado en el baño y en la mamadera (la chocolatada).</li>
+                <li>Él siente que ella lo "atrapó" en su punto más débil.</li>
+            </ul>
+            <p>La "incomodidad" es el pudor que vuelve tarde. Él necesita que la mujer sea "Otra", no alguien que le conozca las entrañas. Ella, al "hacer todo bien" (ser madre, amante, enfermera y proveedora de lácteos), se volvió <strong>Demasiado Otro</strong>.</p>
+        </details>
+        
+        <h3>5. La Síntesis de la Estructura de Ella</h3>
+        <details>
+            <summary>Conclusión</summary>
+            <p>Ella está en un <strong>Goce de Reparación:</strong> "Yo reparo al hombre detonado con mi leche (chocolatada) y mi sexo".</p>
+            <p>Pero el hombre, una vez que es "reparado" y se limpia, lo primero que quiere es irse de la clínica.</p>
+            <p>Y ella se queda como un <strong>Error 404:</strong> procesando una información que no encuentra, porque no entiende que su exceso de aceptación fue precisamente lo que generó el rechazo.</p>
+        </details>
+    </div>
+
+    <div class="analysis-section">
+        <h2>Conclusión Clínica Final</h2>
+        
+        <div class="key-point">
+            <p><strong>La Trampa Perfecta:</strong></p>
+            <p>El delirio materno de Mariana la salva del dolor del rechazo, pero la condena a la soledad. Ella ofrece una maternidad totalizadora que anula el deseo del otro. Él huye no porque ella sea "mala", sino porque ella es <strong>demasiado buena</strong>.</p>
+        </div>
+        
+        <div class="formula">
+            Ella = Madre-Omniabarcadora<br>
+            Él = Hijo-Desechante<br>
+            ∴ No hay lugar para el Amante
+        </div>
+        
+        <p>El circuito de fluidos (mimos → mierda → leche → sexo) colapsa la diferencia simbólica necesaria para el deseo. Mariana, en su intento de ser la mujer perfecta que "acepta todo", se convierte en la madre que el hombre adulto necesita huir para poder desearla.</p>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="index.html" class="back-link">← Volver al inicio</a>
+        <br><br>
+        <span style="color: var(--text-secondary); font-size: 0.9em;">Análisis realizado con el Modelo de Deconstrucción Significante (MDS)</span>
+    </div>
+
+</body>
+</html>
