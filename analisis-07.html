@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis Caso "Hola Yo" – Denuncia de Acoso (MDS003)</title>
+    <style>
+        :root {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --border-color: #404040;
+            --accent-blue: #3498db;
+            --accent-red: #e74c3c;
+            --accent-purple: #8e44ad;
+            --accent-yellow: #ffc107;
+            --accent-green: #28a745;
+            --warning-bg: #442c2e;
+            --success-bg: #2c442e;
+            --info-bg: #2c3e44;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        h1 {
+            border-bottom: 3px solid var(--accent-blue);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            border-left: 5px solid var(--accent-red);
+            padding-left: 15px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            color: var(--accent-purple);
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+        
+        h4 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        
+        strong {
+            color: var(--text-primary);
+        }
+        
+        a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .analysis-section {
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        .quote {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid var(--accent-blue);
+            padding: 15px;
+            margin: 15px 0;
+            font-style: italic;
+            color: var(--text-primary);
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .formula {
+            background-color: rgba(142, 68, 173, 0.2);
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            border: 1px solid var(--accent-purple);
+            color: var(--text-primary);
+        }
+        
+        .intervention {
+            background-color: rgba(255, 193, 7, 0.15);
+            border-left: 4px solid var(--accent-yellow);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .key-point {
+            background-color: rgba(40, 167, 69, 0.15);
+            border-left: 4px solid var(--accent-green);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .warning {
+            background-color: rgba(220, 53, 69, 0.15);
+            border-left: 4px solid var(--accent-red);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .star-rating {
+            color: var(--accent-yellow);
+            font-size: 24px;
+        }
+        
+        details {
+            margin: 15px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: rgba(60, 60, 60, 0.5);
+        }
+        
+        summary {
+            padding: 12px 15px;
+            cursor: pointer;
+            font-weight: bold;
+            background-color: rgba(70, 70, 70, 0.7);
+            color: var(--text-primary);
+            user-select: none;
+            outline: none;
+        }
+        
+        summary:hover {
+            background-color: rgba(80, 80, 80, 0.8);
+        }
+        
+        details[open] summary {
+            background-color: var(--accent-blue);
+            color: white;
+        }
+        
+        details > p, details > ul, details > div {
+            padding: 10px 15px;
+        }
+        
+        code {
+            background-color: rgba(100, 100, 100, 0.3);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: var(--accent-yellow);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-link">← Volver al inicio</a>
+    
+    <h1>Análisis Caso "Hola Yo" – Denuncia de Acoso (MDS003)</h1>
+    
+    <div class="analysis-section">
+        <h2>Detalle del Análisis</h2>
+        <p><strong>Instrucción:</strong> Analizamos este discurso desde el MDS. El video de la decoración se toma como una particularidad obsesiva del sujeto que sostiene su denuncia. Cuando dice <em>"es un hoyo"</em>, se refiere a que el hombre, según su percepción, reduce a la mujer a un "agujero donde meter el pene".</p>
+    </div>
+
+    <h2>Videos del Caso</h2>
+    
+    <h3>Video Principal: Denuncia y Relato</h3>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/xh7LDzj8k5s" allowfullscreen></iframe>
+    </div>
+    
+    <h3>Addendum: Decoración y Unificación Visual</h3>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/JJm78T6Byes" allowfullscreen></iframe>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ANÁLISIS PRINCIPAL -->
+    <!-- ============================================ -->
+    
+    <div class="analysis-section">
+        <h2>Análisis de Discurso: Aplicación del Modelo de Deconstrucción Significante (MDS)</h2>
+        <p><strong>Video/Discurso Proporcionado:</strong> Testimonio de "acoso" por parte de un técnico y proceso de decoración/unificación del hogar.</p>
+        
+        <h3>Fase 1: La Escucha Activa – Aislamiento del Fallido</h3>
+        
+        <details>
+            <summary>1.1 Identificación del Significante Nodal (El Lapsus)</summary>
+            <p>El lapsus no aparece como equivocación verbal, sino como emergencia significante que rompe la coherencia del relato de la denuncia: <strong>"Es un hoyo"</strong>.</p>
+        </details>
+        
+        <details>
+            <summary>1.2 Cadena Significante Aislada</summary>
+            <p>"...ven mujer y ya está, con eso alcanza, es un hoyo, no hay necesidad que estés arreglada, maquillada, bañada..."</p>
+        </details>
+        
+        <h3>Fase 2: La Deconstrucción – Análisis Fonético y Homofónico</h3>
+        
+        <details>
+            <summary>2.1 Descomposición Fonética</summary>
+            <ul>
+                <li><strong>H-O-Y-O</strong> (Sonido: /o//ʝ//o/)</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>2.2 Búsqueda de Homófonos y Polisemia</summary>
+            <ul>
+                <li><strong>Hoyo (Agujero):</strong> Espacio vacío, cavidad, falta. Remite a la reducción del cuerpo femenino a una pura oquedad biológica.</li>
+                <li><strong>Oigo:</strong> Fonéticamente cercano; lo que ella escucha del técnico.</li>
+                <li><strong>Yo-Yo:</strong> Repetición de la vocal "o", en un discurso donde el "Yo" (imagen, estética) intenta tapar el agujero.</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>2.3 Identificación de Resonancias (La Red)</summary>
+            <p>La "Red" se manifiesta en el segundo video (la decoración):</p>
+            <ul>
+                <li><strong>"Unificar":</strong> Pulsión de eliminar el "ruido visual".</li>
+                <li><strong>"Cajonera blanca / Daño cerebral":</strong> Un objeto que no encaja produce una ruptura en su estructura imaginaria.</li>
+                <li><strong>"Poner acento":</strong> Necesidad de marcar puntos fijos para evitar que el ojo caiga en el vacío del "hoyo".</li>
+            </ul>
+        </details>
+        
+        <h3>Fase 3: La Articulación – Sustitución y Lógica</h3>
+        
+        <details>
+            <summary>3.1 Sustitución de la Verdad</summary>
+            <p>La frase original: <em>"...ven mujer y ya está... es un hoyo..."</em></p>
+            <p>Se reinterpreta como:</p>
+            <div class="quote">
+                "Ante la mirada del Otro (el técnico/el hombre), mi consistencia como 'Ideal' (maquillada, bañada, decorada) desaparece y solo queda el agujero de la castración que tanto intento tapar con la decoración".
+            </div>
+        </details>
+        
+        <details>
+            <summary>3.2 Formulación de la Demanda del Otro</summary>
+            <p>El Otro (el técnico) no le demanda su "belleza", sino su ser de objeto. El conflicto radica en que la sujeto ha construido toda su defensa psíquica sobre la estética de la unificación. Al invitarla "hecha un croto", el técnico la despoja de sus insignias de perfección, dejándola a merced del "hoyo".</p>
+        </details>
+        
+        <h3>Fase 4: La Síntesis – Definición de la Estructura de Goce</h3>
+        
+        <details>
+            <summary>4.1 Identificación del Goce (Placer-Sufrimiento)</summary>
+            <p>Se identifica un <strong>Goce de la Bella Indiferencia/Histeria</strong> mezclado con rasgos obsesivos de control.</p>
+            <ul>
+                <li>Ella goza en la denuncia de ser "reducida a un hoyo", porque eso le permite indignarse y volver a su actividad de "unificación".</li>
+                <li>El "daño cerebral" que le produce la cajonera blanca es el mismo que le produce el técnico: la irrupción de algo que no combina con su ideal.</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>4.2 Descripción de la Estructura Lógica</summary>
+            <p>La lógica de la sujeto es la sustitución del ser por la imagen.</p>
+            <p>Su síntoma es la decoración compulsiva como tapón del agujero ("el hoyo"). La denuncia de acoso funciona como defensa para restablecer la distancia entre su "Yo ideal" y la "Mujer-Objeto" que el técnico le devolvió como espejo.</p>
+        </details>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- COMPLEMENTO: EL MATE Y EL PORONGO -->
+    <!-- ============================================ -->
+    
+    <div class="analysis-section">
+        <h2>Complemento de Red Significante: El Mate y el Lapsus del Recipiente</h2>
+        
+        <h3>Fase 1: La Escucha Activa – Aislamiento del Fallido</h3>
+        
+        <details>
+            <summary>1.1 Identificación del Significante Nodal</summary>
+            <p>El significante <strong>"Mate"</strong> actúa como puente entre la "Relación Laboral" (orden, ley) y el "Hoyo" (falta, lo pulsional).</p>
+        </details>
+        
+        <details>
+            <summary>1.2 Cadena Significante Aislada</summary>
+            <p>"...unos mates... no, es una relación laboral."</p>
+        </details>
+        
+        <h3>Fase 2: La Deconstrucción – Análisis Fonético y Homofónico</h3>
+        
+        <details>
+            <summary>2.1 Descomposición Fonética / Homofonía</summary>
+            <ul>
+                <li><strong>MATE:</strong> Del quechua <em>mati</em> (recipiente). Fonéticamente remite a "Matar" (anular el deseo) o "Matiz" (obsesión por los colores).</li>
+                <li><strong>PORONGO:</strong> En lunfardo rioplatense, metáfora directa del falo/pene.</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>2.2 Búsqueda de Homófonos y Polisemia</summary>
+            <p>El mate es un objeto con un <strong>hoyo</strong> (orificio) para ser llenado. La sujeto marca una frontera: "Es una relación laboral". Lo laboral es lo que no tiene "hoyo", es lo reglado, lo sólido, lo "unificado".</p>
+        </details>
+        
+        <details>
+            <summary>2.3 Identificación de Resonancias (La Red)</summary>
+            <p>Aparece una tríada estructural:</p>
+            <ol>
+                <li><strong>El Hoyo:</strong> La mujer como vacío/agujero.</li>
+                <li><strong>El Mate (Porongo):</strong> El elemento fálico que busca "el hoyo".</li>
+                <li><strong>La Relación Laboral:</strong> Intento de tapar la sexualidad mediante la norma.</li>
+            </ol>
+        </details>
+        
+        <h3>Fase 3: La Articulación – Sustitución y Lógica</h3>
+        
+        <details>
+            <summary>3.1 Sustitución de la Verdad</summary>
+            <p>La frase original: <em>"Unos mates... no, es una relación laboral"</em></p>
+            <p>Se reinterpreta como:</p>
+            <div class="quote">
+                "No acepto el 'porongo' (mate) porque eso implica reconocer mi propio 'hoyo'. Prefiero refugiarme en la 'relación laboral' (la estética, el orden) donde nada se succiona y nada falta".
+            </div>
+        </details>
+        
+        <details>
+            <summary>3.2 Formulación de la Demanda del Otro</summary>
+            <p>La demanda del encargado ("unos mates") es leída como demanda de goce sexual. Ella rechaza el mate no por la infusión, sino por la geometría del objeto: un orificio que debe ser llenado. Esto rompe su "unificación" visual y vital.</p>
+        </details>
+        
+        <h3>Fase 4: La Síntesis – Definición de la Estructura de Goce</h3>
+        
+        <details>
+            <summary>4.1 Identificación del Goce</summary>
+            <p>Se confirma un <strong>Goce de Exclusión</strong>. La sujeto se excluye del intercambio pulsional (el mate/el sexo) para sostenerse en un pedestal de perfección higiénica y estética.</p>
+        </details>
+        
+        <details>
+            <summary>4.2 Descripción de la Estructura Lógica</summary>
+            <p>La lógica del sujeto se organiza alrededor del horror al vacío (<em>horror al hoyo</em>).</p>
+            <p>Para ella, la sexualidad es un "desorden decorativo". El técnico que no "encuentra el hoyo al mate" es, en su inconsciente, aquel que amenaza con desarmar su configuración de "cajonera blanca", devolviéndola a su condición de cuerpo agujereado.</p>
+        </details>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- DIAGNÓSTICO E INTERVENCIÓN -->
+    <!-- ============================================ -->
+    
+    <div class="analysis-section">
+        <h2>Síntesis Diagnóstica e Intervención</h2>
+        
+        <h3>Fase 4: La Síntesis (Continuación) – Diagnóstico Estructural</h3>
+        
+        <details>
+            <summary>4.1 Posición Subjetiva: Histeria de Rasgos Obsesivos (Defensa Estética)</summary>
+            <p>La Histeria se manifiesta en la denuncia. El Rasgo Obsesivo se desplaza a la decoración: la "unificación visual" es metáfora de su intento de unificación psíquica.</p>
+        </details>
+        
+        <details>
+            <summary>4.2 El Goce del "Tapón"</summary>
+            <p>La sujeto goza de la indignación moral. El "mate" y el "técnico" representan lo real que viene a ensuciar su vitrina. Su placer consiste en sostener que el mundo es "sucio/desubicado" y ella es la "unificadora/víctima".</p>
+        </details>
+        
+        <h3>Propuesta de Intervención Analítica</h3>
+        
+        <details>
+            <summary>1. Confrontación con la "Unificación"</summary>
+            <p><strong>Intervención:</strong> "¿Qué es lo que no se puede unificar?" o "¿Qué parte de usted se queda fuera de esa paleta de colores?"</p>
+            <p>Objetivo: Que note que su "daño cerebral" ante la cajonera blanca es, en realidad, su angustia ante lo que no puede controlar.</p>
+        </details>
+        
+        <details>
+            <summary>2. Deconstrucción del "Hoyo"</summary>
+            <p><strong>Intervención:</strong> "¿De qué está hecho su hoyo?"</p>
+            <p>Esto desplaza el problema del "técnico primate" hacia su propia falta. Se busca que el "hoyo" deje de ser un agujero donde "se la pone" y pase a ser un espacio de producción subjetiva.</p>
+        </details>
+        
+        <details>
+            <summary>3. El Matiz entre "Laboral" y "Sexual"</summary>
+            <p><strong>Intervención:</strong> "Parece que para usted, si hay mate, no hay trabajo".</p>
+            <p>Forzarla a hablar de la "suciedad" del encuentro con el Otro. ¿Por qué el ritual del mate (el porongo) es incompatible con la ley (lo laboral)?</p>
+        </details>
+        
+        <div class="formula">
+            La intervención busca que la sujeto pase de la decoración de su casa<br>
+            a la arquitectura de su deseo,<br>
+            aceptando que siempre habrá un "mueble que no combine".
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ESCENA HIPOTÉTICA Y CONCLUSIÓN -->
+    <!-- ============================================ -->
+    
+    <div class="analysis-section">
+        <h2>Escena Hipotética: La "Unificación" de los Porongos</h2>
+        
+        <details>
+            <summary>Diálogo Simulado</summary>
+            <p><strong>Sujeto:</strong> "Es que no entendés. El técnico me dijo lo de los mates y el encargado, cuando le fui a quejarme, me salió con lo mismo. Es una red de primates. Me ven así, 'hecha un croto', y piensan que soy un hoyo disponible. Yo solo quería unificar el living..."</p>
+            <p><strong>Analista:</strong> "Usted quería unificar... pero aparecieron dos hombres con un mate."</p>
+            <p><strong>Sujeto:</strong> "¡Exacto! El mate es la antítesis del orden laboral. Es esa cosa húmeda, compartida, ese porongo que circula."</p>
+            <p><strong>Analista (Intervención nodal):</strong> "¿El hoyo es el mate o es usted?"</p>
+        </details>
+        
+        <h3>Síntesis Final: El Choque de Mundos</h3>
+        
+        <table style="width: 100%; border-collapse: collapse; margin: 20px 0; color: var(--text-primary);">
+            <thead>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                    <th style="text-align: left; padding: 12px;">Dimensión</th>
+                    <th style="text-align: left; padding: 12px;">El Mundo de la "Unificación" (La Sujeto)</th>
+                    <th style="text-align: left; padding: 12px;">El Mundo del "Mate" (Los Hombres)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                    <td style="padding: 12px;"><strong>Elemento Central</strong></td>
+                    <td style="padding: 12px;">La Cajonera / El Libro (Lo sólido, lo seco)</td>
+                    <td style="padding: 12px;">El Porongo (Lo húmedo, lo orgánico)</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                    <td style="padding: 12px;"><strong>Función del Agujero</strong></td>
+                    <td style="padding: 12px;">El "Daño": El vacío que hay que tapar</td>
+                    <td style="padding: 12px;">El "Hoyo": Orificio funcional donde se pone el agua/deseo</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                    <td style="padding: 12px;"><strong>Vínculo Social</strong></td>
+                    <td style="padding: 12px;">Relación Laboral: Intercambio bajo la Ley</td>
+                    <td style="padding: 12px;">Relación Pulsional: Intercambio de mates/fluidos</td>
+                </tr>
+                <tr>
+                    <td style="padding: 12px;"><strong>Efecto de lo Real</strong></td>
+                    <td style="padding: 12px;">Acoso / Ruido: Lo que "desubica" el orden</td>
+                    <td style="padding: 12px;">Invitación / Encuentro: Lo que busca habitar el hoyo</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="key-point">
+            <p><strong>Conclusión Diagnóstica Final:</strong> La sujeto no denuncia un acto de violencia sexual, sino una <em>violencia semántica</em>. Su "daño cerebral" es el encuentro con lo que no tiene explicación lógica. La cura no vendrá de una denuncia exitosa, sino de la aceptación de que la vida no combina, y que el mate, aunque sea un "hoyo húmedo", es lo que permite el vínculo con el Otro.</p>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="index.html" class="back-link">← Volver al inicio</a>
+        <br><br>
+        <span style="color: var(--text-secondary); font-size: 0.9em;">Análisis realizado con el Modelo de Deconstrucción Significante (MDS)</span>
+    </div>
+
+</body>
+</html>
