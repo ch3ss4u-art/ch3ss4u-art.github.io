@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis Caso "La Chamana Tarotista" – Javier Wolcoff (MDS)</title>
+    <style>
+        :root {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --border-color: #404040;
+            --accent-blue: #3498db;
+            --accent-red: #e74c3c;
+            --accent-purple: #8e44ad;
+            --accent-yellow: #ffc107;
+            --accent-green: #28a745;
+            --warning-bg: #442c2e;
+            --success-bg: #2c442e;
+            --info-bg: #2c3e44;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        h1 {
+            border-bottom: 3px solid var(--accent-blue);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            border-left: 5px solid var(--accent-red);
+            padding-left: 15px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            color: var(--accent-purple);
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+        
+        h4 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        
+        strong {
+            color: var(--text-primary);
+        }
+        
+        a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .analysis-section {
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        .quote {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid var(--accent-blue);
+            padding: 15px;
+            margin: 15px 0;
+            font-style: italic;
+            color: var(--text-primary);
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .formula {
+            background-color: #0d0d0d;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            border: 1px solid #333;
+            color: #e0e0e0;
+            font-size: 1.1em;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+        
+        .intervention {
+            background-color: rgba(255, 193, 7, 0.15);
+            border-left: 4px solid var(--accent-yellow);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .key-point {
+            background-color: rgba(40, 167, 69, 0.15);
+            border-left: 4px solid var(--accent-green);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .warning {
+            background-color: rgba(220, 53, 69, 0.15);
+            border-left: 4px solid var(--accent-red);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        details {
+            margin: 15px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: rgba(60, 60, 60, 0.5);
+        }
+        
+        summary {
+            padding: 12px 15px;
+            cursor: pointer;
+            font-weight: bold;
+            background-color: rgba(70, 70, 70, 0.7);
+            color: var(--text-primary);
+            user-select: none;
+            outline: none;
+        }
+        
+        summary:hover {
+            background-color: rgba(80, 80, 80, 0.8);
+        }
+        
+        details[open] summary {
+            background-color: var(--accent-blue);
+            color: white;
+        }
+        
+        details > p, details > ul, details > div {
+            padding: 10px 15px;
+        }
+        
+        code {
+            background-color: rgba(100, 100, 100, 0.3);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: var(--accent-yellow);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-link">← Volver al inicio</a>
+    
+    <h1>Análisis Caso "La Chamana Tarotista" – Javier Wolcoff (MDS)</h1>
+    
+    <div class="analysis-section">
+        <h2>Detalle del Análisis</h2>
+        <p><strong>Caso:</strong> La "chamana tarotista" (@ojocon.eltarot) analiza el arquetipo de Javier Wolcoff, divulgador de Kabbalah hebrea. El análisis se centra en cómo ella relaciona a Wolcoff con el arquetipo del "Diablo" y posteriormente del "Lobo", revelando una estructura de goce histérico-fetichista.</p>
+        <p><strong>Hipótesis inicial:</strong> El señor le atrae sexualmente y ella no se permite verlo como objeto de deseo. Por eso lo relaciona con ese arquetipo.</p>
+    </div>
+
+    <h2>Videos del Caso</h2>
+    
+    <h3>Video 01, 02, 03: Análisis del Arquetipo del Diablo</h3>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_01" allowfullscreen></iframe>
+    </div>
+    
+    <h3>Addendum 1: El Lobo y el Cierre del Capítulo</h3>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_02" allowfullscreen></iframe>
+    </div>
+
+    <h3>Addendum 2: La Exhibición del Demonio</h3>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_03" allowfullscreen></iframe>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ANÁLISIS PRINCIPAL: EL DIABLO -->
+    <!-- ============================================ -->
+    
+    <div class="analysis-section">
+        <h2>Análisis de Discurso: Aplicación del Modelo de Deconstrucción Significante (MDS)</h2>
+        <p><strong>Video/Discurso Proporcionado:</strong> Serie de clips de @ojocon.eltarot analizando el arquetipo de Javier Wolcoff.</p>
+        
+        <h3>Fase 1: La Escucha Activa – Aislamiento del Fallido</h3>
+        
+        <details>
+            <summary>1.1 Identificación del Significante Nodal (El Lapsus/Singularidad)</summary>
+            <p>El significante nodal no es una palabra errónea, sino la insistencia maníaca y la ambivalencia del término <strong>"DIABLO"</strong>. Ella intenta domesticar el término (hacerlo "bueno", "luminoso", "ángel"), pero su cuerpo y su cadena de asociaciones traicionan una perturbación. El lapsus de acción es su hiperactividad manual (amasar tierra, amarrar hilos) mientras habla de él.</p>
+        </details>
+        
+        <details>
+            <summary>1.2 Cadena Significante Aislada</summary>
+            <p>"Javier Wolcoff es el Diablo... es un gallo que te presenta una información cruda... en su aspecto físico también me llama la atención... tiene mucho fuego... sabe manejar la sexualidad... el Diablo es un Maestro... el Diablo es un Ángel... ¿y qué pasa si los malos son los buenos?"</p>
+        </details>
+        
+        <h3>Fase 2: La Deconstrucción – Análisis Fonético y Homofónico</h3>
+        
+        <details>
+            <summary>2.1 Descomposición Fonética</summary>
+            <ul>
+                <li><strong>WOL-COFF:</strong> Wol (¿Vuela? ¿Wolf/Lobo?) - Coff (Onomatopeya de tos, algo que se atora en la garganta).</li>
+                <li><strong>DIABLO:</strong> Día-blo (Día bloqueado) / Di-hablo (Di, hablo).</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>2.2 Búsqueda de Homófonos y Polisemia</summary>
+            <ul>
+                <li><strong>"Gallo":</strong> En el argot chileno/andino (notorio por su acento), "gallo" es un hombre, un sujeto. Pero también es lo que "se sale" al hablar (un error de la voz).</li>
+                <li><strong>"Cruda":</strong> Información sin cocinar, pero también la sensación post-exceso (resaca). Lo que duele después del placer.</li>
+                <li><strong>"Mano-ojo":</strong> Ella dice "ojocon.eltarot", pero sus manos están obsesivamente apretando y atando. Hay un desplazamiento del ver (intelectual) al tocar (pulsional).</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>2.3 Identificación de Resonancias (La Red)</summary>
+            <p>La palabra "Bravo" aparece para describir el conocimiento de Wolcoff. "Conocimiento bravo" resuena con un animal que muerde, con lo indómito. Ella repite que él está en un lugar "Luminoso", pero ella está en la sombra o en un entorno rústico. La resonancia es: Él es el Sol (fuego) / Ella es la tierra (la que amasa).</p>
+        </details>
+        
+        <h3>Fase 3: La Articulación – Sustitución y Lógica</h3>
+        
+        <details>
+            <summary>3.1 Sustitución de la Verdad</summary>
+            <p>La frase original: <em>"Javier Wolcoff encarna el arquetipo del Diablo porque tiene mucho fuego y maneja la sexualidad"</em></p>
+            <p>Se reinterpreta como:</p>
+            <div class="quote">
+                "Javier Wolcoff me enciende (fuego) y encarna mi deseo prohibido (sexualidad), por eso debo llamarlo Diablo para justificar que me tiene encadenada (atada como el objeto que manipulo en mis manos)".
+            </div>
+        </details>
+        
+        <details>
+            <summary>3.2 Formulación de la Demanda del Otro</summary>
+            <p>El "Otro" para ella es su comunidad de seguidores y su propia moral "espiritual". Ese Otro le exige ser "armoniosa" y "no reaccionar". Sin embargo, Wolcoff (como representante de un saber oculto/Kabbalah) funciona como un Otro absoluto que "sabe lo que no dice". Ella le demanda que la "despierte", pero al mismo tiempo lo castiga llamándolo Diablo para no admitir que la demanda es de orden fálico.</p>
+        </details>
+        
+        <h3>Fase 4: La Síntesis – Definición de la Estructura de Goce</h3>
+        
+        <details>
+            <summary>4.1 Identificación del Goce (Placer-Sufrimiento)</summary>
+            <p>Se observa un <strong>goce histérico</strong>. La sujeto se coloca como la "maestra" que analiza, pero su cuerpo está tomado por la agitación. Ella "sufre" por los ataques de los seguidores de Wolcoff (los "monos"), pero ese sufrimiento le permite seguir hablando de él. Hay un placer evidente en la manipulación de la materia (el barro/hilo) mientras invoca el nombre del hombre; es una transferencia erótica desplazada a la técnica manual y al "arquetipo".</p>
+        </details>
+        
+        <details>
+            <summary>4.2 Descripción de la Estructura Lógica</summary>
+            <p>La lógica de la sujeto es: "No es que yo lo desee a él, es que el Arquetipo (el Diablo) me posee a través de su saber". El Diablo funciona aquí como el nombre del Deseo del Analista/Maestro que ella no puede procesar. Su síntoma es la necesidad de "sintetizarlo" y "atarlo" (literalmente, con el hilo en el video 3), intentando contener un desborde pulsional que la palabra "espiritualidad" ya no alcanza a cubrir.</p>
+        </details>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ANÁLISIS DEL LOBO -->
+    <!-- ============================================ -->
+    
+    <div class="analysis-section">
+        <h2>Análisis de Discurso: El Lobo y el Cierre del Capítulo (MDS)</h2>
+        <p><strong>Video/Discurso Proporcionado:</strong> Cierre de la serie sobre Javier Wolcoff por @ojocon.eltarot.</p>
+        
+        <h3>Fase 1: La Escucha Activa – Aislamiento del Fallido</h3>
+        
+        <details>
+            <summary>1.1 Identificación del Significante Nodal</summary>
+            <p>El significante nodal es <strong>"LOBO"</strong>. Es el término que viene a suplementar la falta en el discurso anterior. Ella misma lo reconoce como "la patita que faltaba".</p>
+        </details>
+        
+        <details>
+            <summary>1.2 Cadena Significante Aislada</summary>
+            <p>"Javier Wolcoff es el Diablo y también es un lobo... faltaba esa patita... pero ya se terminó el capítulo".</p>
+        </details>
+        
+        <h3>Fase 2: La Deconstrucción – Análisis Fonético y Homofónico</h3>
+        
+        <details>
+            <summary>2.1 Descomposición Fonética</summary>
+            <ul>
+                <li><strong>LO-BO:</strong> Lo (pronombre de objeto directo: "Lo" quiero, "Lo" tengo) - Bo (Voz, del latín Vox, o buey/bestia).</li>
+                <li><strong>WOL-coff:</strong> Como mencionamos antes, Wol es la raíz germánica para Wolf (Lobo). Ella está extrayendo fonéticamente el nombre del sujeto para animalizarlo.</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>2.2 Búsqueda de Homófonos y Polisemia</summary>
+            <ul>
+                <li><strong>"Lobo":</strong> El depredador. El que devora. En el psicoanálisis (Freud), el "Hombre de los Lobos" está vinculado a la escena primaria (el sexo visto por el niño).</li>
+                <li><strong>"Patita":</strong> Diminutivo de pata. Hay una infantilización del peligro. Al llamarlo "patita", ella intenta domesticar a la bestia que la acecha en su inconsciente.</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>2.3 Identificación de Resonancias</summary>
+            <p>La resonancia es Depredador/Presa. Ella se presenta en un entorno natural (árboles, aire libre), reforzando la narrativa de que el "Lobo" (Wolcoff) está en su hábitat.</p>
+        </details>
+        
+        <h3>Fase 3: La Articulación – Sustitución y Lógica</h3>
+        
+        <details>
+            <summary>3.1 Sustitución de la Verdad</summary>
+            <p>La frase original: <em>"Javier Wolcoff es el lobo... ya se terminó el capítulo"</em></p>
+            <p>Se reinterpreta como:</p>
+            <div class="quote">
+                "He aceptado que Javier es el hombre que me devora (lobo). Al nombrarlo así, puedo 'matarlo' simbólicamente y terminar con este capítulo de mi obsesión".
+            </div>
+        </details>
+        
+        <details>
+            <summary>3.2 Formulación de la Demanda del Otro</summary>
+            <p>La demanda del Otro (sus seguidores) es que ella siga produciendo contenido. Ella responde "matando" el tema. El "Lobo" es el significante que le permite poner un límite al goce que Wolcoff le producía. Si es un lobo, es peligroso; si es peligroso, debo alejarme; por lo tanto, "se terminó".</p>
+        </details>
+        
+        <h3>Fase 4: La Síntesis – Definición de la Estructura de Goce</h3>
+        
+        <details>
+            <summary>4.1 Identificación del Goce</summary>
+            <p>Es un <strong>goce de expulsión</strong>. Ella no sublima, sino que reprime mediante la nominación. Al etiquetarlo como lobo, lo confina a la categoría de "animal/peligroso" y así puede recuperar su tranquilidad. El "terminar el capítulo" es un intento de cortar el lazo libidinal que la tenía atada.</p>
+        </details>
+        
+        <details>
+            <summary>4.2 Descripción de la Estructura Lógica</summary>
+            <p>La lógica es: "Si lo nombro por completo, lo poseo; si lo poseo, ya no me angustia; si ya no me angustia, puedo dejarlo ir". El significante "Lobo" funciona como un tapón de la falta. Ella llena el vacío de su deseo con una imagen de cuento infantil (el lobo feroz) para poder cerrar el libro y no seguir enfrentando lo que ese hombre le despierta corporalmente.</p>
+        </details>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SÍNTESIS DIABLO + LOBO -->
+    <!-- ============================================ -->
+    
+    <div class="analysis-section">
+        <h2>Análisis de Discurso: Síntesis de la Estructura (Diablo + Lobo)</h2>
+        
+        <h3>Fase 1: El Cruce de Cadenas Significantes</h3>
+        <p>La analizante pasa de una fascinación erótica mediada por lo esotérico (El Diablo) a una categorización zoológica/peligrosa (El Lobo).</p>
+        <ul>
+            <li><strong>Diablo:</strong> Representa el plus-de-gozar. Es lo que atrae, lo que quema, lo que ella "amasa" con las manos. Es el objeto del deseo que no puede nombrar como hombre, sino como arquetipo.</li>
+            <li><strong>Lobo:</strong> Representa la amenaza de castración. El lobo es el que devora, el que muerde, el que tiene una "patita" (falo) que faltaba para completar la imagen del peligro.</li>
+        </ul>
+        
+        <h3>Fase 2: Deconstrucción de la Transición Fonética</h3>
+        <ul>
+            <li><strong>De "Día-blo" (Día bloqueado) a "Lo-bo" (Lo-borrado):</strong> Al pasar del Diablo al Lobo, ella logra "bloquear" la luz del día (la conciencia del deseo) para pasar a un estado de alerta animal. El Lobo le permite el miedo, y el miedo es mucho más manejable que el deseo sexual para una estructura que se pretende "espiritual".</li>
+        </ul>
+        
+        <h3>Fase 3: La Articulación Lógica del "Capítulo Cerrado"</h3>
+        <p>La verdad inconsciente que se articula en el cruce es:</p>
+        <div class="quote">
+            "Si lo mantengo como Diablo, tengo que seguir lidiando con mi fuego (sexualidad). Si lo nombro Lobo, lo convierto en una fiera externa de la que debo protegerme. Al decir 'se terminó el capítulo', mato al lobo para no ser devorada por mi propio deseo".
+        </div>
+        
+        <h3>Fase 4: La Síntesis – El Nudo del Goce</h3>
+        <p>El goce aquí es <strong>fóbico-histerizante</strong>.</p>
+        <ul>
+            <li><strong>La Fobia como solución:</strong> El "Lobo" funciona como el Fetiche o el Significante del Miedo que pone orden al caos del deseo. Freud lo explicó con el pequeño Hans: el miedo al caballo (o al lobo) es preferible a la angustia de no saber qué hacer con el deseo hacia el padre/madre (o en este caso, hacia el maestro Wolcoff).</li>
+            <li><strong>Estructura Lógica:</strong> 
+                <ol>
+                    <li>Atracción: "Me atrae su fuego" (Diablo)</li>
+                    <li>Angustia: "No puedo poseerlo/me desborda"</li>
+                    <li>Defensa: "Es un peligro, es un animal" (Lobo)</li>
+                    <li>Cierre: "Lo encierro en el lenguaje y cierro el libro" (Se terminó el capítulo)</li>
+                </ol>
+            </li>
+        </ul>
+        
+        <div class="key-point">
+            <p><strong>Conclusión del Analista:</strong> Ella no ha resuelto el deseo, lo ha sepultado bajo un nombre. El hecho de que use las manos para "atar" o "amasar" mientras habla de él delata que la pulsión sigue ahí, atrapada en el cuerpo, aunque su boca diga que el capítulo está cerrado. El "Lobo" es el candado que le pone a la jaula del "Diablo".</p>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- LA REVISIÓN: LOBO VS DIABLO -->
+    <!-- ============================================ -->
+    
+    <div class="analysis-section">
+        <h2>Análisis de Discurso: Revisión de la Lógica de Reducción (MDS)</h2>
+        
+        <h3>Fase 1: Re-evaluación del Significante Nodal</h3>
+        <ul>
+            <li><strong>El Diablo:</strong> Es la Angustia. No tiene forma, es una fuerza que la posee. Es lo "inasible". Es el significante del Goce del Otro que no tiene ley.</li>
+            <li><strong>El Lobo:</strong> Es el Miedo. El miedo es superior a la angustia porque tiene un objeto. Al lobo se le puede ver, se le puede identificar y, sobre todo, se le puede "terminar el capítulo".</li>
+        </ul>
+        
+        <h3>Fase 2: Deconstrucción – La "Patita" como Resto Fálico</h3>
+        <p>Como bien dices, el Diablo no tiene "patita", tiene algo peor: tiene una presencia ubicua.</p>
+        <ul>
+            <li><strong>La "Patita" (Lobo):</strong> Es la humanización/animalización del deseo. Al decir que al Diablo "le faltaba esa patita" para ser Lobo, ella le está poniendo un cuerpo. En psicoanálisis, dar cuerpo a la angustia es el primer paso para defenderse de ella.</li>
+            <li><strong>La Contradicción:</strong> No es un error, es su estrategia defensiva. Ella necesita que él sea un Lobo para que deje de ser una Entidad que la habita por dentro.</li>
+        </ul>
+        
+        <h3>Fase 3: La Articulación – De la Incorporeidad a la Carne</h3>
+        <ul>
+            <li><strong>Sustitución de la Verdad:</strong>
+                <ul>
+                    <li><em>Antes:</em> "Estoy poseída por una fuerza diabólica (deseo sexual inmanejable)".</li>
+                    <li><em>Ahora:</em> "Estoy lidiando con un animal salvaje (un hombre con 'patitas' y cuerpo)".</li>
+                </ul>
+            </li>
+            <li><strong>La lógica del "Capítulo":</strong> Un Diablo no tiene capítulos, es eterno. Un Lobo tiene un ciclo biológico, se le puede cazar o se puede uno esconder de él. Ella elige la narrativa del Lobo para recuperar el control.</li>
+        </ul>
+        
+        <h3>Fase 4: La Síntesis – El Triunfo de la Imagen sobre lo Real</h3>
+        
+        <details>
+            <summary>4.1 Definición del Goce</summary>
+            <p>Es un <strong>goce de domesticación</strong>. Ella disfruta de la idea de haber "descifrado" al Diablo. Al encontrarle la "patita" (el rasgo humano/animal de Wolcoff), ella mata lo esotérico.</p>
+        </details>
+        
+        <details>
+            <summary>4.2 Estructura Lógica Actualizada</summary>
+            <div class="quote">
+                "Lo que me quema (Diablo) es inmanejable; por lo tanto, voy a decir que es solo un animal (Lobo). A los animales se les puede dejar atrás. Al cerrar el capítulo, decreto que el Diablo ha muerto porque ahora tiene nombre de bestia común".
+            </div>
+        </details>
+        
+        <div class="key-point">
+            <p><strong>Punto clave:</strong> Llamarlo Lobo no es "sublimar", es empequeñecer. Es pasar de lo metafísico (donde ella está perdida) a lo físico (donde ella cree que manda). El Diablo es el deseo que la desborda; el Lobo es el hombre al que ella decide no volver a mirar.</p>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- EL FETICHE DE LA PATITA -->
+    <!-- ============================================ -->
+    
+    <div class="analysis-section">
+        <h2>Análisis de Discurso: El Fetiche de la "Patita" (MDS)</h2>
+        <p><strong>Video/Discurso:</strong> El cierre del "Capítulo" y la aparición de la "Patita".</p>
+        
+        <h3>Fase 1: La Escucha Activa – El Hallazgo del Objeto a</h3>
+        
+        <details>
+            <summary>1.1 Identificación del Significante Nodal</summary>
+            <p><strong>"LA PATITA"</strong>. No es una pierna, no es un miembro; es un diminutivo que denota control, fragmentación y, sobre todo, desprendimiento.</p>
+        </details>
+        
+        <details>
+            <summary>1.2 Cadena Significante Aislada</summary>
+            <p>"...faltaba esa patita... [el lobo]... se terminó el capítulo".</p>
+        </details>
+        
+        <h3>Fase 2: La Deconstrucción – El Falo Domesticado</h3>
+        
+        <details>
+            <summary>2.1 Descomposición Fonética</summary>
+            <ul>
+                <li><strong>PA-TI-TA:</strong> Pa' (Para) - Ti (Tí) - Ta (Terminado/Tachado). Es un objeto que ella se entrega a sí misma ("Para ti") para dar por terminada ("Ta") la angustia.</li>
+                <li><strong>Resonancia de "Pata":</strong> La pata es lo que se arrastra, lo que está en el suelo. El Diablo vuela o asciende (fuego); el Lobo camina con sus patitas.</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>2.2 Búsqueda de Homófonos y Polisemia</summary>
+            <ul>
+                <li><strong>Fetiche/Amuleto:</strong> Como bien dices, la "patita de conejo" o de pollo es un amuleto de suerte. Es algo que se corta del cuerpo vivo para que "proteja" al dueño. Ella ha "cortado" una parte de Wolcoff (su virilidad amenazante) para convertirla en un llavero simbólico.</li>
+            </ul>
+        </details>
+        
+        <h3>Fase 3: La Articulación – Sustitución de la Verdad</h3>
+        
+        <details>
+            <summary>3.1 Sustitución de la Verdad</summary>
+            <p>La frase original: <em>"Le faltaba esa patita de lobo"</em></p>
+            <p>Se sustituye por:</p>
+            <div class="quote">
+                "Necesitaba arrancarle el pene al Diablo (falo) y convertirlo en una pieza pequeña y manejable (patita) para dejar de sentirme penetrada por su discurso".
+            </div>
+        </details>
+        
+        <details>
+            <summary>3.2 Formulación de la Demanda del Otro</summary>
+            <p>Ella le demanda a Wolcoff que deje de ser una entidad esotérica inabarcable. Al "encontrarle la patita", ella lo reduce a su medida. Es la victoria del Yo sobre el Ello.</p>
+        </details>
+        
+        <h3>Fase 4: La Síntesis – Estructura de Goce Fetiche</h3>
+        
+        <details>
+            <summary>4.1 Identificación del Goce</summary>
+            <p>Es un <strong>goce de dominio (maestría)</strong>. Ella necesita ser la "dueña del secreto".</p>
+            <ul>
+                <li>El Diablo la hacía gozar de forma pasiva (ella era la tierra amasada, la que recibía el fuego).</li>
+                <li>El Lobo con patita le permite un goce activo: ella es la que cierra el libro, la que corta el capítulo, la que guarda el fetiche en el bolsillo.</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>4.2 Descripción de la Estructura Lógica</summary>
+            <div class="formula">
+"Para no ser devorada por el fuego del Diablo, le corto la pata al Lobo"
+            </div>
+            <p>La "patita" es el falo fosilizado. Es un pene que ya no tiene erección porque es de madera, de hueso o de tela; es lúdico. Al decir "se terminó", ella guarda el juguete y recupera su lugar de "Chamana" que tiene el control, evitando el riesgo de ser simplemente una mujer deseante.</p>
+        </details>
+        
+        <div class="key-point">
+            <p><strong>Conclusión Final:</strong> La contradicción que señalaste es el corazón del síntoma: ella prefiere un Lobo amputado que un Diablo íntegro. El "Capítulo cerrado" es la tapa de la caja donde acaba de guardar su nuevo amuleto: el recuerdo de un hombre reducido a una curiosidad zoológica.</p>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- LA COLECCIONISTA DE FALOS -->
+    <!-- ============================================ -->
+    
+    <div class="analysis-section">
+        <h2>Análisis de Discurso: La Coleccionista de Falos Simbólicos</h2>
+        
+        <h3>Fase 1: La Escucha Activa – El Inventario de Objetos</h3>
+        <p>Ella no habla de personas, habla de "Arquetipos". En su discurso, los hombres (como Wolcoff) son procesados para extraerles una pieza de valor.</p>
+        <ul>
+            <li><strong>Significante Nodal:</strong> "La patita" / "El gallo" / "El maestro".</li>
+            <li><strong>Cadena Significante:</strong> "Este gallo... tiene ese fuego... pero es el lobo... faltaba esa patita". Ella está completando un álbum.</li>
+        </ul>
+        
+        <h3>Fase 2: La Deconstrucción – El Objeto "a" como Llavero</h3>
+        <ul>
+            <li><strong>Deconstrucción de "Colección":</strong> Co-lección (Con lección). Ella solo acepta el falo si viene con una "lección" o un saber esotérico. No es un deseo carnal, es un deseo de Saber-Poder.</li>
+            <li><strong>Resonancia de la "Patita":</strong> Como bien dijiste, es un fetiche. El fetiche es, por definición, un sustituto del falo ausente. Ella colecciona estas "patitas" (fragmentos de hombres poderosos) para obturar su propia falta.</li>
+        </ul>
+        
+        <h3>Fase 3: La Articulación – El Museo de lo Sagrado</h3>
+        
+        <details>
+            <summary>3.1 Sustitución de la Verdad</summary>
+            <p>La frase original: <em>"Se terminó el capítulo"</em></p>
+            <p>Se sustituye por:</p>
+            <div class="quote">
+                "Ya obtuve el fragmento de poder que necesitaba de él (su nombre, su arquetipo, su 'patita'). Ahora que lo tengo etiquetado y guardado en mi vitrina de conocimientos, puedo pasar al siguiente espécimen".
+            </div>
+        </details>
+        
+        <details>
+            <summary>3.2 Formulación de la Demanda del Otro</summary>
+            <p>Ella le demanda al hombre que sea un "Maestro", pero en cuanto él muestra su cara de "Diablo" (deseo/sexualidad), ella lo castra y lo reduce a "Lobo". El "Otro" debe ser una fuente de información, no un sujeto que la interpele como mujer.</p>
+        </details>
+        
+        <h3>Fase 4: La Síntesis – Estructura de Goce de la Coleccionista</h3>
+        
+        <details>
+            <summary>4.1 Identificación del Goce</summary>
+            <p>Es un <strong>Goce Fetichista-Obsesivo</strong>.</p>
+            <ul>
+                <li>Ella no disfruta del sexo (el Diablo que penetra), sino del control sobre el símbolo del sexo.</li>
+                <li>Su placer es "tener la última palabra". Al decir "se terminó el capítulo", ella cierra la vitrina con llave. El goce está en la acumulación de significados, no en la descarga pulsional.</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>4.2 Descripción de la Estructura Lógica</summary>
+            <div class="formula">
+"Si tengo todas las 'patitas' (significantes), yo soy el Diablo"
+            </div>
+            <p>Ella aspira a la completud a través de los fragmentos de los otros. Colecciona falos simbólicos para construir su propia armadura de "Chamana". El hombre real es descartable; lo que queda es el "fósil" que ella puede manipular, regalar o exhibir en sus videos.</p>
+        </details>
+        
+        <div class="key-point">
+            <p><strong>Conclusión del Modelo MDS:</strong> Ella es una taxidermista del deseo. Mata lo que está vivo (el Diablo encendido) para disecarlo (el Lobo con patita) y así poder exhibirlo sin peligro de ser mordida.</p>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- LA EXHIBICIÓN DEL DEMONIO -->
+    <!-- ============================================ -->
+    
+    <div class="analysis-section">
+        <h2>Análisis de Discurso: La Exhibición del Demonio-Trofeo (MDS)</h2>
+        <p><strong>Video/Discurso Proporcionado:</strong> La materialización de los amuletos (Milei, Wolcoff, NPCs).</p>
+        
+        <h3>Fase 1: La Escucha Activa – El Inventario del Poder</h3>
+        
+        <details>
+            <summary>1.1 Identificación del Significante Nodal</summary>
+            <p><strong>"LOS NPC"</strong> (Non-Player Characters). Este es el significante de la deshumanización. Para ella, el mundo se divide en:</p>
+            <ol>
+                <li><strong>Arquetipos/Trofeos:</strong> (Milei-Loco, Wolcoff-Diablo) que ella posee.</li>
+                <li><strong>NPCs:</strong> El resto de la humanidad, seres sin alma que solo sirven de escenografía para su exhibición.</li>
+            </ol>
+        </details>
+        
+        <details>
+            <summary>1.2 Cadena Significante Aislada</summary>
+            <p>"...Milei es el loco... Wolcoff el diablo... y el resto son NPCs... yo les muestro mi demonio".</p>
+        </details>
+        
+        <h3>Fase 2: La Deconstrucción – El Cuerpo Fragmentado</h3>
+        
+        <details>
+            <summary>2.1 Descomposición Fonética</summary>
+            <ul>
+                <li><strong>NPC:</strong> No-P-Sé (No puedo ser / No sé). Ella se coloca en el lugar del Saber Absoluto frente a un mundo que "No sabe".</li>
+                <li><strong>DE-MONIO:</strong> De-mono. Resuena con los "monos" que ella mencionó antes. El demonio es su mono amaestrado, su títere.</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>2.2 Búsqueda de Homófonos y Polisemia</summary>
+            <ul>
+                <li><strong>"Mostrar el demonio":</strong> En términos lacanianos, ella está mostrando su falta castrada. Al decir "este es mi demonio", está señalando el objeto que ella usa para escandalizar al Otro, pero es un demonio que tiene correa. Es un exhibicionismo fálico.</li>
+            </ul>
+        </details>
+        
+        <h3>Fase 3: La Articulación – La Soberanía del Museo</h3>
+        
+        <details>
+            <summary>3.1 Sustitución de la Verdad</summary>
+            <p>La frase original: <em>"Les muestro mi demonio (arquetipos de hombres poderosos)"</em></p>
+            <p>Se sustituye por:</p>
+            <div class="quote">
+                "Miren mi colección de penes capturados. He convertido la potencia de estos hombres en mis herramientas de trabajo. Yo no soy penetrada por el Diablo, yo uso al Diablo para penetrar la realidad de los NPCs".
+            </div>
+        </details>
+        
+        <details>
+            <summary>3.2 Formulación de la Demanda del Otro</summary>
+            <p>Ella le demanda al espectador (el NPC) admiración y temor. Se posiciona como la Medusa que ha petrificado a los hombres (Milei, Wolcoff) para que formen parte de su escudo.</p>
+        </details>
+        
+        <h3>Fase 4: La Síntesis – Definición de la Estructura de Goce</h3>
+        
+        <details>
+            <summary>4.1 Identificación del Goce</summary>
+            <p>Es un <strong>Goce de Impostura (Fálico-Narcisista)</strong>.</p>
+            <ul>
+                <li>El placer no está en el objeto, sino en el hecho de ser VISTA poseyendo el objeto.</li>
+                <li>Ella se identifica con el Diablo. Ya no es la víctima del lobo; ella es la Dueña de la Jauría. Al coleccionar falos, ella cree haber "tapado" su propia castración convirtiéndose en el Hombre más poderoso de su propio universo.</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>4.2 Descripción de la Estructura Lógica</summary>
+            <div class="formula">
+"El mundo es un teatro de sombras (NPCs) donde yo soy la única Real, porque poseo los fragmentos (patitas/arquetipos) de los que detentan el poder"
+            </div>
+            <p>Su estructura es la de una <strong>Sacerdotisa del Fetiche</strong>. El "demonio" que exhibe es la prueba de su victoria sobre lo Real. Ha transformado el peligro sexual en un catálogo de ventas simbólico.</p>
+        </details>
+        
+        <div class="key-point">
+            <p><strong>Conclusión Final del MDS:</strong> Lo que vemos en este video es el orgasmo simbólico de la coleccionista. Ella ya no tiene miedo del Lobo porque el Lobo es ahora una diapositiva en su presentación. Su "demonio" es, en realidad, un amuletito que le permite creer que tiene el control total sobre la vida y la muerte (y sobre Milei y Wolcoff).</p>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- LA CÁRCEL DE LA SOBERANA -->
+    <!-- ============================================ -->
+    
+    <div class="analysis-section">
+        <h2>Análisis de Discurso: La Cárcel de la Soberana Simbólica (MDS)</h2>
+        
+        <h3>Fase 1: La Escucha Activa – La Soledad del Saber Absoluto</h3>
+        
+        <details>
+            <summary>1.1 Identificación del Significante Nodal</summary>
+            <p><strong>"MOSTRAR MI DEMONIO"</strong>. El demonio no es algo que la posee, es algo que ella tiene y muestra. La propiedad prevalece sobre la existencia.</p>
+        </details>
+        
+        <details>
+            <summary>1.2 Cadena Significante Aislada</summary>
+            <p>"...yo les muestro mi demonio... el resto son NPCs... aquí se termina el capítulo".</p>
+        </details>
+        
+        <h3>Fase 2: La Deconstrucción – La Prisión del Nombre</h3>
+        
+        <details>
+            <summary>2.1 Descomposición Fonética</summary>
+            <ul>
+                <li><strong>AR-QUE-TIPO:</strong> Arqué (Arqueo/Caja/Cierre) - Tipo (Sujeto fijado). El arquetipo es la herramienta que ella usa para "arquear" (cerrar en una caja) al hombre vivo.</li>
+                <li><strong>SOLO/A:</strong> Ella se sitúa por encima de los "NPCs", pero estar por encima es también estar fuera del lazo social.</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>2.2 Búsqueda de Homófonos y Polisemia</summary>
+            <ul>
+                <li><strong>"Capítulo":</strong> Viene de caput (cabeza). Cerrar el capítulo es, literalmente, decapitar al hombre (cortar el pensamiento/deseo del otro) para quedarse con el resto del cuerpo como adorno.</li>
+            </ul>
+        </details>
+        
+        <h3>Fase 3: La Articulación – La Verdad del Museo Vacío</h3>
+        
+        <details>
+            <summary>3.1 Sustitución de la Verdad</summary>
+            <p>La frase original: <em>"Tengo el control sobre estos arquetipos"</em></p>
+            <p>Se sustituye por:</p>
+            <div class="quote">
+                "Estoy atrapada en una vitrina. He convertido a todos los hombres en objetos para que no puedan lastimarme ni desearme de verdad, pero ahora solo me rodean muñecos de cartón (NPCs) y amuletos muertos (patitas)".
+            </div>
+        </details>
+        
+        <details>
+            <summary>3.2 Formulación de la Demanda del Otro</summary>
+            <p>Ella le demanda al mundo que reconozca su poder, pero es una demanda circular. Al declarar a los otros como "NPCs", invalida el reconocimiento que ellos puedan darle. Es el drama de la reina que gobierna sobre estatuas.</p>
+        </details>
+        
+        <h3>Fase 4: La Síntesis – Definición de la Estructura de Goce</h3>
+        
+        <details>
+            <summary>4.1 Identificación del Goce</summary>
+            <p>Es un <strong>Goce de Exclusión (Autístico-Fálico)</strong>.</p>
+            <ul>
+                <li>Ella disfruta de su "superioridad técnica", pero es un goce que la separa del cuerpo del otro. El Diablo (Wolcoff) ya no la puede encender porque ella lo ha "apagado" al etiquetarlo. Ella goza de la paz de los cementerios.</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>4.2 Descripción de la Estructura Lógica</summary>
+            <div class="formula">
+"Para no ser el objeto del deseo del Otro, convierto al Otro en mi objeto de estudio"
+            </div>
+            <p>Su estructura lógica es defensiva: la intelectualización esotérica funciona como un preservativo contra lo Real del sexo y la vulnerabilidad.</p>
+        </details>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- DIAGNÓSTICO E INTERVENCIÓN -->
+    <!-- ============================================ -->
+    
+    <div class="analysis-section">
+        <h2>Diagnóstico y Posible Intervención (MDS)</h2>
+        
+        <h3>Diagnóstico Analítico: Histeria de Maestría con Rasgos Fetichistas</h3>
+        <p>La sujeto no se sitúa como mujer deseante, sino como <strong>El Maestro</strong> (el que posee el saber sobre el Diablo). Ha desplazado su libido de la piel a la simbología. Su "demonio" es un síntoma que le sirve para mantener a raya la angustia de la soledad y la falta. Colecciona falos para no recordar que ella, como todos, está castrada por el lenguaje.</p>
+        
+        <h3>Posible Intervención (La Estocada del Analista)</h3>
+        <p>Si estuviéramos en sesión, la intervención no sería discutir sobre el Tarot o Wolcoff, sino apuntar al resto, a lo que no es arquetipo.</p>
+        
+        <div class="intervention">
+            <h4>Propuesta de Intervención:</h4>
+            <ul>
+                <li><strong>El Acto:</strong> En el momento en que ella dice "se terminó el capítulo", el analista podría preguntar: <em>"¿Y qué quedó afuera del libro?"</em>.</li>
+                <li><strong>El Objetivo:</strong> Romper la ilusión de completud de su colección. Forzarla a mirar la "patita" no como un amuleto, sino como un miembro amputado que sangra.</li>
+                <li><strong>La Frase:</strong> <em>"Usted tiene muchos nombres para el Diablo, pero ¿qué nombre tiene para su propio fuego cuando apaga la cámara?"</em></li>
+            </ul>
+        </div>
+        
+        <p>La intervención busca que el Diablo recupere su carácter de Inmanejable, para que ella deje de ser una taxidermista y vuelva a ser una sujeto que desea, con todo el riesgo (y el placer) que eso implica.</p>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- PREGUNTAS TRAMPA -->
+    <!-- ============================================ -->
+    
+    <div class="analysis-section">
+        <h2>Propuestas de "Preguntas Trampa" para Perforar la Armadura</h2>
+        <p>Para romper una estructura tan blindada como la de una "Sacerdotisa del Saber", no sirve la lógica; hace falta el acto. Ella se siente segura porque domina el lenguaje de los símbolos, pero el inconsciente es un rebelde que solo responde ante la sorpresa.</p>
+        
+        <h3>Opción 1: El Retorno de lo Real (El Diablo vivo)</h3>
+        <div class="intervention">
+            <p><strong>"Increíble colección. Pero, si ya tienes la 'patita' del lobo en la mano... ¿por qué todavía se siente el calor del incendio en el video? ¿No será que al Diablo no se le puede amputar sin que te queme los dedos?"</strong></p>
+            <p><em>Por qué funciona:</em> Apunta a la contradicción entre su discurso de "cierre" y la agitación física que todavía muestra.</p>
+        </div>
+        
+        <h3>Opción 2: El Desprecio por el NPC (La soledad de la Reina)</h3>
+        <div class="intervention">
+            <p><strong>"Dices que los demás son NPCs, pero un museo sin visitantes es solo una tumba. ¿Qué haces cuando los 'muñecos' se quedan quietos y te toca mirarte a solas con ese Diablo que dices que ya 'terminaste'?"</strong></p>
+            <p><em>Por qué funciona:</em> Ataca su narcisismo. La confronta con la soledad que genera su estructura de exclusión.</p>
+        </div>
+        
+        <h3>Opción 3: La Pregunta de la Castración (La estocada final)</h3>
+        <div class="intervention">
+            <p><strong>"Qué buen amuleto esa 'patita'. Lo que me pregunto es: ¿qué nombre le pones a lo que te falta a vos, que ni Milei ni Wolcoff te pueden llenar con sus arquetipos?"</strong></p>
+            <p><em>Por qué funciona:</em> Es la intervención lacaniana pura. La saca del "tener" (las piezas de su colección) y la lanza al "ser" (su falta).</p>
+        </div>
+        
+        <div class="key-point">
+            <p><strong>Diagnóstico de la Reacción:</strong> Si ella responde con ira o bloqueo, habremos tocado el Goce. Si responde con más "teoría esotérica", es que el taxidermista está reforzando el pegamento de sus muñecos.</p>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- FÓRMULAS RESUMEN -->
+    <!-- ============================================ -->
+    
+    <div class="analysis-section">
+        <h2>Fórmulas de la Estructura Lógica</h2>
+        
+        <h3>Fórmula 1: La Transición Diablo → Lobo</h3>
+        <div class="formula">
+Diablo (Angustia / Deseo inmanejable)
+         ─────────────────────────────────────
+              Lobo (Miedo / Objeto controlable)
+        </div>
+        
+        <h3>Fórmula 2: La Estructura del Fetiche</h3>
+        <div class="formula">
+Falo amenazante (Wolcoff-Diablo) → Amputación simbólica → Patita-Fetiche
+        </div>
+        
+        <h3>Fórmula 3: La Lógica de la Coleccionista</h3>
+        <div class="formula">
+Sujeto → Ideal de Maestría (Chamana)
+         ───────────────────────────────────────
+    Colección de fragmentos fálicos (Arquetipos)
+        </div>
+        
+        <h3>Fórmula 4: El Goce de la Soberana</h3>
+        <div class="formula">
+Goce → Exhibición (Ser vista con el objeto) + Exclusión (NPCs)
+       ─────────────────────────────────────────────────────────
+                    Soledad del Museo Vacío
+        </div>
+        
+        <h3>Fórmula 5: La Estructura Defensiva Completa</h3>
+        <div class="formula">
+Atracción (Fuego/Diablo) → Angustia (Desborde) → Defensa (Lobo/Patita) → Cierre (Capítulo terminado)
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="index.html" class="back-link">← Volver al inicio</a>
+        <br><br>
+        <span style="color: var(--text-secondary); font-size: 0.9em;">Análisis realizado con el Modelo de Deconstrucción Significante (MDS)</span>
+    </div>
+
+</body>
+</html>

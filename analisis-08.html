@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis Lic. Castelnuovo – Fobia y Empatía (MDS004)</title>
+    <style>
+        :root {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --border-color: #404040;
+            --accent-blue: #3498db;
+            --accent-red: #e74c3c;
+            --accent-purple: #8e44ad;
+            --accent-yellow: #ffc107;
+            --accent-green: #28a745;
+            --warning-bg: #442c2e;
+            --success-bg: #2c442e;
+            --info-bg: #2c3e44;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        h1 {
+            border-bottom: 3px solid var(--accent-blue);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            border-left: 5px solid var(--accent-red);
+            padding-left: 15px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            color: var(--accent-purple);
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+        
+        h4 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        
+        strong {
+            color: var(--text-primary);
+        }
+        
+        a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .analysis-section {
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        .quote {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid var(--accent-blue);
+            padding: 15px;
+            margin: 15px 0;
+            font-style: italic;
+            color: var(--text-primary);
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .formula {
+            background-color: #0d0d0d;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            border: 1px solid #333;
+            color: #e0e0e0;
+            font-size: 1.1em;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+        
+        .intervention {
+            background-color: rgba(255, 193, 7, 0.15);
+            border-left: 4px solid var(--accent-yellow);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .key-point {
+            background-color: rgba(40, 167, 69, 0.15);
+            border-left: 4px solid var(--accent-green);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .warning {
+            background-color: rgba(220, 53, 69, 0.15);
+            border-left: 4px solid var(--accent-red);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .star-rating {
+            color: var(--accent-yellow);
+            font-size: 24px;
+        }
+        
+        details {
+            margin: 15px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: rgba(60, 60, 60, 0.5);
+        }
+        
+        summary {
+            padding: 12px 15px;
+            cursor: pointer;
+            font-weight: bold;
+            background-color: rgba(70, 70, 70, 0.7);
+            color: var(--text-primary);
+            user-select: none;
+            outline: none;
+        }
+        
+        summary:hover {
+            background-color: rgba(80, 80, 80, 0.8);
+        }
+        
+        details[open] summary {
+            background-color: var(--accent-blue);
+            color: white;
+        }
+        
+        details > p, details > ul, details > div {
+            padding: 10px 15px;
+        }
+        
+        code {
+            background-color: rgba(100, 100, 100, 0.3);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: var(--accent-yellow);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-link">← Volver al inicio</a>
+    
+    <h1>Análisis Lic. Castelnuovo – Fobia a las Cucarachas y Demanda de Empatía (MDS004)</h1>
+    
+    <div class="analysis-section">
+        <h2>Detalle del Análisis</h2>
+        <p><strong>Instrucción:</strong> Analizamos el discurso de la Lic. desde el Método M.D.S., enfocándonos en la fobia a las cucarachas como metáfora de la invasión del Otro y la demanda de empatía como exigencia de identificación masiva con su pánico.</p>
+    </div>
+
+    <h2>Video del Caso</h2>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/TInrsnQgA2c" allowfullscreen></iframe>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ANÁLISIS PRINCIPAL -->
+    <!-- ============================================ -->
+    
+    <div class="analysis-section">
+        <h2>Análisis de Discurso: Aplicación del Modelo de Deconstrucción Significante (MDS)</h2>
+        <p><strong>Video/Discurso Proporcionado:</strong> Testimonio clínico-personal de la Lic. María Castelnuovo sobre la fobia a las cucarachas y la demanda de empatía.</p>
+        
+        <h3>Fase 1: La Escucha Activa – Aislamiento del Fallido</h3>
+        
+        <details>
+            <summary>1.1 Identificación del Significante Nodal (El Lapsus)</summary>
+            <p>El lapsus no es gramatical, sino fonético y repetitivo: <strong>"Em-em-empáticos"</strong>. La vacilación en "em" y la insistencia en el término revelan una fisura en la cadena significante.</p>
+        </details>
+        
+        <details>
+            <summary>1.2 Cadena Significante Aislada</summary>
+            <p>"Por favor, seamos más em-em-empáticos con los temores y terrores que puede sentir otra persona..."</p>
+        </details>
+        
+        <h3>Fase 2: La Deconstrucción – Análisis Fonético y Homofónico</h3>
+        
+        <details>
+            <summary>2.1 Descomposición Fonética</summary>
+            <ul>
+                <li><strong>EM</strong> (Vacilación/repetición)</li>
+                <li><strong>PÁTICOS</strong> (Del griego <em>pathos</em>: sufrimiento)</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>2.2 Búsqueda de Homófonos y Polisemia</summary>
+            <ul>
+                <li><strong>EM → EN:</strong> Posición de interioridad. "En-pánico".</li>
+                <li><strong>PÁTICOS → PSICOPÁTICOS / SIMPÁTICOS:</strong> Ambivalencia entre el sufrimiento y la frialdad.</li>
+                <li><strong>Resonancia oculta:</strong> "Empáticos" → "En-Pánico".</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>2.3 Identificación de Resonancias (La Red)</summary>
+            <p>La licenciada repite: <em>"No digo miedo... es pánico"</em>, <em>"me puedo quedar paralizada"</em>, y menciona cuatro veces la palabra <em>"entorno"</em>.</p>
+            <p>La red une: <strong>Entorno + Pánico + Empatía</strong>. El "Entorno" es el lugar donde ella está "En-Pánico".</p>
+        </details>
+        
+        <h3>Fase 3: La Articulación – Sustitución y Lógica</h3>
+        
+        <details>
+            <summary>3.1 Sustitución de la Verdad</summary>
+            <p>La frase original: <em>"Seamos más empáticos con los temores..."</em></p>
+            <p>Se reinterpreta como:</p>
+            <div class="quote">
+                "Seamos más (los que estamos) EN-PÁNICO con los temores..."
+            </div>
+            <p>La Verdad Inconsciente: El pedido de "empatía" no es un llamado a la comprensión del otro, sino una identificación masiva con el objeto fóbico. Ella no pide que la entiendan, pide que el entorno valide que estar "en pánico" es la única respuesta lógica.</p>
+        </details>
+        
+        <details>
+            <summary>3.2 Formulación de la Demanda del Otro</summary>
+            <p>La demanda del Otro (el entorno, la sociedad) le exige "lógica" y "razón" ("es solo una cucaracha", "qué exagerada").</p>
+            <p>El sujeto responde con una contra-demanda: Exige que el Otro abandone su posición de saber (la razón) para caer con ella en el <em>Pathos</em> (sufrimiento). El "Empático" que ella busca es alguien que renuncie a la lógica para ser un par en el terror.</p>
+        </details>
+        
+        <h3>Fase 4: La Síntesis – Definición de la Estructura de Goce</h3>
+        
+        <details>
+            <summary>4.1 Identificación del Goce (Placer/Sufrimiento)</summary>
+            <p>Goce Histérico-Fóbico: El sujeto encuentra un goce paradójico en la parálisis. Al decir que el pánico es "incontrolable" e "invade el cuerpo", se deslinda de su responsabilidad subjetiva.</p>
+            <p>Hay un placer en ser "tomada" por este terror que la hace única frente a un entorno que ella tilda de "banal". Su síntoma (la fobia) es su forma de capturar la atención del Otro.</p>
+        </details>
+        
+        <details>
+            <summary>4.2 Descripción de la Estructura Lógica</summary>
+            <p>La estructura lógica se sostiene en la exclusión de la razón: <em>"La razón no entra en ese momento"</em>.</p>
+            <p>El sujeto se posiciona como un "resto" fuera de la lógica del Otro. La cucaracha no es el problema; el problema es el juicio del Otro ("qué exagerada").</p>
+            
+            <div class="formula">
+Demanda de Empatía → Identificación Masiva con el Pánico
+──────────────────────────────────────────────────────
+          Renuncia del Otro a la Razón
+            </div>
+            
+            <p>Su discurso busca castrar la lógica del Otro para que solo quede el cuerpo sufriente (<em>pathos</em>) como único puente de comunicación.</p>
+        </details>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="index.html" class="back-link">← Volver al inicio</a>
+        <br><br>
+        <span style="color: var(--text-secondary); font-size: 0.9em;">Análisis realizado con el Modelo de Deconstrucción Significante (MDS)</span>
+    </div>
+
+</body>
+</html>
